@@ -10,7 +10,6 @@ gow
 gpg
 helm
 hwinfo
-less
 madvr
 mpc-be
 mpc-hc-fork
@@ -31,4 +30,4 @@ windows-terminal
 wiztree
 yq
 
-coreutils
+less
