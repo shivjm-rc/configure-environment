@@ -25,8 +25,8 @@ Write-Output "Installing aria2 for faster downloads…"
 scoop bucket add extras
 scoop install aria2
 
-$script:Apps = (Get-Content "./scoop-apps")
-Write-Output "Installing $($script:Apps.Length) apps…"
+$script:Apps = (Get-Content "$Global:PackagesDirectory\\scoop")
+Write-Output "Installing $($script:Apps.Count) apps…"
 scoop install @script:Apps
 scoop uninstall vcredist2019    # remove leftover installer
 # TODO install TeraCopy
