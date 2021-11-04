@@ -62,3 +62,16 @@ Function Script:SetMachineEnv {
 }
 
 Export-ModuleMember -Function SetMachineEnv
+
+# https://leftlobed.wordpress.com/2008/06/04/getting-the-current-script-directory-in-powershell/
+<#
+ .Synopsis
+  Gets the parent directory of the script being executed.
+
+ .Outputs
+  String. The parent directory of the script being executed.
+#>
+function Get-ScriptDirectory {
+    $Invocation = (Get-Variable MyInvocation -Scope 1).Value
+    Split-Path $Invocation.MyCommand.Path
+}
