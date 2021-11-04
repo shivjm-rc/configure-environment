@@ -1,3 +1,23 @@
+<#
+ .Synopsis
+  Configures installed applications.
+
+ .Description
+  Configures installed applications using known settings and by copying existing data where appropriate.
+
+ .Parameter AppsSource
+  Existings `App` directory.
+
+ .Parameter UserProfileSource
+  Existing user profile directory.
+
+ .Parameter MediaSource
+  Existing `Media` directory.
+
+ .Parameter AllTheIconsCommit
+  Commit reference to use when downloading all-the-icons fonts.
+#>
+
 param(
     [Parameter(Mandatory = $True)]
     [String]$AppsSource,
