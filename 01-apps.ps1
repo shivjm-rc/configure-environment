@@ -25,9 +25,9 @@ Write-Output "Installing aria2 for faster downloads…"
 scoop bucket add extras
 scoop install aria2
 
-$script:Apps = (Get-Content "$Global:PackagesDirectory\\scoop")
-Write-Output "Installing $($script:Apps.Count) apps…"
-scoop install @script:Apps
+$script:ScoopApps = (Get-Content "$Global:PackagesDirectory\\scoop")
+Write-Output "Installing $($script:ScoopApps.Count) Scoop apps…"
+scoop install @script:ScoopApps
 scoop uninstall vcredist2019    # remove leftover installer
 # TODO install TeraCopy
 
@@ -47,3 +47,7 @@ if ($null -eq (Get-Command choco -ErrorAction SilentlyContinue)) {
     SetMachineEnv -Name ChocolateyInstall -Value 'C:\App\Chocolatey'
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 }
+
+$script:ChocoApps = (Get-Content "$Global:PackagesDirectory\\scoop")
+Write-Output "Installing $($script:ChocoApps.Count) Chocolatey apps…"
+choco install -y @script:ChocoApps
