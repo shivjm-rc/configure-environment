@@ -12,3 +12,7 @@ $script:PythonScriptsDirectory = "$($script:PythonDirectory)\Scripts"
 $script:ExistingPath = [Environment]::GetEnvironmentVariable("PATH", "Machine")
 $script:NewPath = $script:ExistingPath + ";" + $script:PythonScriptsDirectory
 SetMachineEnv -Name 'PATH' -Value $script:NewPath
+
+Write-Output "Installing pipx packages…"
+$script:PipxPackages = Get-Content ("$Global:PackagesDirectory\\pipx") | Join-String -Separator " "
+pipx install @script:PipxPackages
