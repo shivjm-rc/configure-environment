@@ -1,0 +1,116 @@
+[
+  {
+    "package": "cargo-edit",
+    "version": "0.8.0"
+  },
+  {
+    "package": "cargo-make",
+    "version": "0.35.6"
+  },
+  {
+    "package": "cargo-outdated",
+    "version": "0.9.17"
+  },
+  {
+    "package": "cargo-sweep",
+    "version": "0.6.2"
+  },
+  {
+    "package": "cargo-update",
+    "version": "8.0.0"
+  },
+  {
+    "package": "cargo-audit",
+    "version": "0.15.2"
+  },
+  {
+    "package": "cargo-watch",
+    "version": "8.1.1"
+  },
+  {
+    "package": "bat",
+    "version": "0.18.3"
+  },
+  {
+    "package": "fd-find",
+    "version": "8.2.1"
+  },
+  {
+    "package": "fselect",
+    "version": "0.7.7"
+  },
+  {
+    "package": "loc",
+    "version": "0.5.0"
+  },
+  {
+    "package": "ripgrep",
+    "version": "13.0.0"
+  },
+  {
+    "package": "amber",
+    "version": "0.5.9"
+  },
+  {
+    "package": "xh",
+    "version": "0.13.0"
+  },
+  {
+    "package": "as-tree",
+    "git": "https://github.com/jez/as-tree"
+  },
+  {
+    "package": "du-dust",
+    "version": "0.7.0"
+  },
+  {
+    "package": "parallel-disk-usage",
+    "bin": "pdu",
+    "version": "0.6.1"
+  },
+  {
+    "package": "lsd",
+    "version": "0.20.1"
+  },
+  {
+    "package": "zoxide",
+    "version": "0.7.9"
+  },
+  {
+    "package": "gping",
+    "version": "1.2.6"
+  },
+  {
+    "package": "kondo",
+    "version": "0.4.0"
+  },
+  {
+    "package": "pueue",
+    "version": "1.0.3"
+  },
+  {
+    "package": "pulldown-cmark",
+    "version": "0.8.0"
+  },
+  {
+    "package": "tidy-viewer",
+    "version": "1.4.2"
+  },
+  {
+    "package": "fnm",
+    "version": "1.27.0"
+  },
+  {
+    "package": "sd",
+    "version": "0.7.6"
+  },
+  {
+    "package": "xsv",
+    "version": "0.13.0"
+  },
+  {
+    "package": "exa",
+    "git": "https://github.com/skyline75489/exa.git",
+    "branch": "chesterliu/dev/win-support"
+  }
+]
