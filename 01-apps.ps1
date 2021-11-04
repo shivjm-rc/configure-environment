@@ -1,6 +1,6 @@
 <#
  .Synopsis
-  Install applications using Scoop.
+  Install applications using Scoop & Chocolatey.
 #>
 
 $ErrorActionPreference = "Stop"
@@ -42,3 +42,8 @@ sudo scoop install -g DejaVuSansMono-NF meslo-nf
 Write-Output "Installing Java…"
 scoop bucket add java
 scoop install openjdk11
+
+if ($null -eq (Get-Command choco -ErrorAction SilentlyContinue)) {
+    SetMachineEnv -Name ChocolateyInstall -Value 'C:\App\Chocolatey'
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+}
