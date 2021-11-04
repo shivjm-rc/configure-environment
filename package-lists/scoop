@@ -32,3 +32,6 @@ wiztree
 yq
 
 less
+
+kubectl
+kustomize
