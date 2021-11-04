@@ -51,3 +51,6 @@ if ($null -eq (Get-Command choco -ErrorAction SilentlyContinue)) {
 $script:ChocoApps = (Get-Content "$Global:PackagesDirectory\\scoop")
 Write-Output "Installing $($script:ChocoApps.Count) Chocolatey apps…"
 choco install -y @script:ChocoApps
+
+Import-Module ".\rust.psm1"
+Initialize-Rust
