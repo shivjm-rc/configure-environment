@@ -15,6 +15,7 @@ mpc-be
 mpc-hc-fork
 msys2
 openssl
+pandoc
 picard
 picpick
 plantuml
