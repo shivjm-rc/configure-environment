@@ -8,6 +8,7 @@ fzf
 git-lfs
 gow
 gpg
+hadolint
 helm
 hwinfo
 madvr
