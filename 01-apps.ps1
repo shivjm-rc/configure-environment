@@ -31,3 +31,6 @@ Initialize-Rust
 
 Import-Module ".\node.psm1"
 Install-Node "$Global:PackagesDirectory\\fnm" "$Global:PackagesDirectory\\npm"
+
+Import-Module ".\go.psm1"
+Install-GoPackages "$Global:PackagesDirectory\\go"
