@@ -28,3 +28,6 @@ choco install -y @script:ChocoApps
 
 Import-Module ".\rust.psm1"
 Initialize-Rust
+
+Import-Module ".\node.psm1"
+Install-Node "$Global:PackagesDirectory\\fnm" "$Global:PackagesDirectory\\npm"
