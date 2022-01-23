@@ -19,12 +19,14 @@ mpc-hc-fork
 msys2
 openssl
 pandoc
+pgadmin4-np
 picard
 picpick
 plantuml
 putty
 python
 ruby
+screentogif
 sops
 sudo
 vlc
@@ -38,3 +40,15 @@ less
 
 kubectl
 kustomize
+
+displaycal
+gh
+helmfile
+exiftool
+mercurial
+octant
+latexindent
+pandoc
+yt-dlp
+kind
+shellcheck
