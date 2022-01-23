@@ -5,11 +5,14 @@
 .DESCRIPTION
  Globally installs the Go packages listed in the file.
 #>
-Function Install-GoPackages($file) {
-    $packages = (Get-Content $file)
-    Write-Output "Installing $($packages.Count) Go packages…"
+param(
+    [Parameter(Mandatory = $True, Position = 1)]
+    [string]
+    $file)
 
-    foreach ($package in $packages) {
-        go install $package
-    }
+$script:packages = (Get-Content $file)
+Write-Output "Installing $($script:packages.Count) Go packages…"
+
+foreach ($package in $script:packages) {
+    go install $package
 }
