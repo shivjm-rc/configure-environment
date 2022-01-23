@@ -14,6 +14,9 @@ Function Initialize-Rust() {
         Start-Process $script:RustupInstallerPath -ArgumentList $script:RustupArgs
     }
 
+    Write-Output "Setting the default toolchain to MSVC instead of GNU…"
+    rustup set default-host x86_64-pc-windows-msvc
+
     Write-Output "Installing stable Rust toolchain…"
     rustup toolchain add stable-x86_64-pc-windows-msvc
 
