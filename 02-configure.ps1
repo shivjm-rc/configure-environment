@@ -70,3 +70,5 @@ Copy-Item -Path $AppsSource\Scoop\persist -Recurse -Force -Destination $env:SCOO
 Copy-Item -Path $AppsSource\ScoopApps\persist -Recurse -Force -Destination $env:SCOOP_GLOBAL
 
 New-Item -Path "$env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" -Value "Invoke-Expression '. `"D:\Media\src\my\powershell\profile.ps1`"'" -Force
+
+SetMachineEnv -Name "EXE4J_JAVA_HOME" -Value $env:JAVA_HOME
