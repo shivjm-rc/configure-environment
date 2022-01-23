@@ -26,8 +26,7 @@ $script:ChocoApps = (Get-Content "$Global:PackagesDirectory\\scoop")
 Write-Output "Installing $($script:ChocoApps.Count) Chocolatey apps…"
 choco install -y @script:ChocoApps
 
-Import-Module ".\rust.psm1"
-Initialize-Rust
+. ".\rust.ps1" "$Global:PackagesDirectory\\cargo.json"
 
 Import-Module ".\node.psm1"
 Install-Node "$Global:PackagesDirectory\\fnm" "$Global:PackagesDirectory\\npm"
