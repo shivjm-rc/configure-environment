@@ -1,5 +1,7 @@
+black
 pdm
 datum
 pre-commit
 yamale
 yamllint
+python-lsp-server[all]
