@@ -11,6 +11,8 @@ else {
     Write-Output "Scoop already installed, skipping…"
 }
 
+scoop config aria2-warning-enabled false
+
 Write-Output "Installing Git to add buckets…"
 scoop install git
 
