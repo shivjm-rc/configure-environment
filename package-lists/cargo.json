@@ -5,11 +5,11 @@
   },
   {
     "package": "cargo-make",
-    "version": "0.35.6"
+    "version": "0.35.8"
   },
   {
     "package": "cargo-outdated",
-    "version": "0.9.17"
+    "version": "0.10.2"
   },
   {
     "package": "cargo-sweep",
@@ -17,11 +17,11 @@
   },
   {
     "package": "cargo-update",
-    "version": "8.0.0"
+    "version": "8.1.2"
   },
   {
     "package": "cargo-audit",
-    "version": "0.15.2"
+    "version": "0.16.0"
   },
   {
     "package": "cargo-watch",
@@ -29,15 +29,15 @@
   },
   {
     "package": "bat",
-    "version": "0.18.3"
+    "version": "0.19.0"
   },
   {
     "package": "fd-find",
-    "version": "8.2.1"
+    "version": "8.3.1"
   },
   {
     "package": "fselect",
-    "version": "0.7.7"
+    "version": "0.7.9"
   },
   {
     "package": "loc",
@@ -53,7 +53,7 @@
   },
   {
     "package": "xh",
-    "version": "0.13.0"
+    "version": "0.15.0"
   },
   {
     "package": "as-tree",
@@ -74,11 +74,11 @@
   },
   {
     "package": "zoxide",
-    "version": "0.7.9"
+    "version": "0.8.0"
   },
   {
     "package": "gping",
-    "version": "1.2.6"
+    "version": "1.2.7"
   },
   {
     "package": "kondo",
@@ -86,19 +86,19 @@
   },
   {
     "package": "pueue",
-    "version": "1.0.3"
+    "version": "1.0.6"
   },
   {
     "package": "pulldown-cmark",
-    "version": "0.8.0"
+    "version": "0.9.1"
   },
   {
     "package": "tidy-viewer",
-    "version": "1.4.2"
+    "version": "1.4.3"
   },
   {
     "package": "fnm",
-    "version": "1.27.0"
+    "version": "1.29.2"
   },
   {
     "package": "sd",
@@ -115,7 +115,7 @@
   },
   {
     "package": "just",
-    "version": "0.10.5"
+    "version": "0.11.0"
   },
   {
     "package": "cargo-feature",
