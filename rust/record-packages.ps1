@@ -8,6 +8,8 @@ param(
     $filename
 )
 
+$ErrorActionPreference = "Stop"
+
 $headerMarker = "Package*"
 
 $cargoUpdateOutput = (cargo install-update -l) -split "`n"

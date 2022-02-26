@@ -8,6 +8,8 @@ param(
     $packagesFile
 )
 
+$ErrorActionPreference = "Stop"
+
 Import-Module ".\env.psm1"
 
 $script:RustupUri = 'https://win.rustup.rs/x86_64'
@@ -50,4 +52,8 @@ foreach ($package in $script:Packages) {
 
     Write-Debug "Calling cargo install $arguments"
     cargo install @arguments
+    
+    if ($LastExitCode -ne 0) {
+        throw "Failed to install $name"
+    }
 }
