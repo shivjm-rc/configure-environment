@@ -44,8 +44,9 @@ $existing = ConvertFrom-Json (Get-Content $filename -Raw)
 $new = @()
 
 foreach ($package in $existing) {
-    if ($null -ne $package.version) {
-        $package.version = $packages[$package.package]
+    $updated = $packages[$package.package]
+    if ($null -ne $package.version -and $null -ne $updated) {
+        $package.version = $updated
     } else {
         Write-Debug "Skipping non-versioned package $($package.package)"
     }
