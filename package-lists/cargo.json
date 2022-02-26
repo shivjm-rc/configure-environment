@@ -120,5 +120,9 @@
   {
     "package": "cargo-feature",
     "version": "0.6.0"
+  },
+  {
+    "package": "cargo-nextest",
+    "version": "0.9.8"
   }
 ]
