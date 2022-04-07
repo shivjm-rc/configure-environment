@@ -9,6 +9,7 @@ netlify-cli@8.16.1
 vscode-json-languageserver@1.3.4
 yaml-language-server@1.4.0
 bash-language-server@2.0.0
+svelte-language-server@0.14.23
 
 release-please@13.4.6
 
