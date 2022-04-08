@@ -124,5 +124,9 @@
   {
     "package": "cargo-nextest",
     "version": "0.9.8"
+  },
+  {
+    "package": "git-delta",
+    "version": "0.12.1"
   }
 ]
