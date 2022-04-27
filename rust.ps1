@@ -16,6 +16,7 @@ $script:RustupUri = 'https://win.rustup.rs/x86_64'
 $script:RustupInstallerPath = "$env:TEMP\\rustup-init.exe"
 $script:RustupArgs = ("-y", "--default-toolchain", "nightly-x86_64-pc-windows-msvc", "-c", "rust-src", "-c", "rust-analyzer-preview", "-c", "rustfmt", "-c", "clippy")
 $script:Packages = ConvertFrom-Json (Get-Content -Raw $packagesFile)
+$script:Toolchains = ("stable-x86_64-pc-windows-msvc", "nightly-x86_64-pc-windows-msvc")
 
 $env:RUSTFLAGS = "-C target-feature=+crt-static"
 
@@ -28,8 +29,13 @@ if ($null -eq (Get-Command rustup -ErrorAction SilentlyContinue)) {
 Write-Output "Setting the default toolchain to MSVC instead of GNU…"
 rustup set default-host x86_64-pc-windows-msvc
 
-Write-Output "Installing stable Rust toolchain…"
-rustup toolchain add stable-x86_64-pc-windows-msvc
+Write-Output "Installing Rust toolchains…"
+foreach ($toolchain in $Toolchains) {
+    rustup toolchain add $toolchain
+}
+
+Write-Output "Adding required components…"
+rustup component add rust-analyzer-preview
 
 Write-Output "Installing $($script:Packages.Count) packages via Cargo…"
 
