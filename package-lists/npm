@@ -11,6 +11,8 @@ yaml-language-server@1.4.0
 bash-language-server@2.0.0
 svelte-language-server@0.14.23
 
+swagger-cli@4.0.4
+
 release-please@13.4.6
 
 typescript@4.5.5
