@@ -7,7 +7,7 @@ prettier@2.5.1
 netlify-cli@8.16.1
 
 vscode-json-languageserver@1.3.4
-yaml-language-server@1.4.0
+yaml-language-server@1.7.0
 bash-language-server@2.0.0
 svelte-language-server@0.14.23
 
@@ -15,7 +15,7 @@ swagger-cli@4.0.4
 
 release-please@13.4.6
 
-typescript@4.5.5
+typescript@4.6.4
 typescript-language-server@0.9.6
 
 mermaid.cli@0.5.1
