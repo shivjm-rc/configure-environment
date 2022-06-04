@@ -34,6 +34,8 @@ $ErrorActionPreference = "Stop"
 Import-Module './env.psm1'
 Import-Module './fonts.psm1'
 
+Write-Output "You must install Iosevka and Iosevka Aile manually."
+
 . './python.ps1'
 
 Write-Output "Copying .gitconfig…"
