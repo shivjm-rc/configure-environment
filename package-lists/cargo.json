@@ -128,5 +128,9 @@
   {
     "package": "git-delta",
     "version": "0.12.1"
+  },
+  {
+    "package": "taplo-cli",
+    "version": "0.6.3"
   }
 ]
