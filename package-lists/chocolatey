@@ -5,3 +5,5 @@ diffutils
 zig
 golang
 sass
+dart-sdk
+flutter
