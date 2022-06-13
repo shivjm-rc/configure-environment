@@ -52,3 +52,5 @@ pandoc
 yt-dlp
 kind
 shellcheck
+
+doctl
