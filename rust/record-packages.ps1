@@ -47,7 +47,8 @@ $new = @()
 
 foreach ($package in $existing) {
     $updated = $packages[$package.package]
-    if ($null -ne $package.version -and $null -ne $updated) {
+
+    if ($null -ne $package.version -and $null -ne $updated -and !($null -ne $updated.platform -and "windows" -notin $updated.platform)) {
         $package.version = $updated
     } else {
         Write-Debug "Skipping non-versioned package $($package.package)"
