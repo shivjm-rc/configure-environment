@@ -1,0 +1,56 @@
+---
+- name: Install Scoop applications
+  hosts: windows
+  vars:
+    apps: "{{ lookup('file', 'scoop-packages').strip().split() }}"
+  tasks:
+    - name: Add buckets
+      community.windows.win_scoop_bucket:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - extras
+        - nerd-fonts
+        - java
+        - misc
+        - nonportable
+
+    - name: Install aria2 for faster downloads
+      community.windows.win_scoop_bucket:
+        name: "aria2"
+        state: present
+
+    - name: Disable aria2 warning
+      ansible.windows.win_powershell:
+        script: |-
+          scoop config aria2-warning-enabled false
+
+    # TODO add TeraCopy
+    - name: Install applications
+      community.windows.win_scoop:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ apps | flatten(levels=1) }}"
+
+    - name: Install nerd fonts
+      community.windows.win_scoop:
+        global: yes
+        name: "{{ item }}"
+        state: present
+      loop:
+        - "DejaVuSansMono-NF"
+        - "meslo-nf"
+
+    - name: Install Java
+      community.windows.win_scoop:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - openjdk11
+
+    - name: Remove leftovers
+      community.windows.win_scoop:
+        name: "{{ item }}"
+        state: absent
+      loop:
+        - vcredist2019

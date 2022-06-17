@@ -1,0 +1,6 @@
+scoop:
+  local: "C:\\App\\Scoop"
+  global: "C:\\App\\ScoopApps"
+chocolatey:
+  directory: "C:\\App\\Chocolatey"
+rustupUri: "https://win.rustup.rs/x86_64"

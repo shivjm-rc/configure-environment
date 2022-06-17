@@ -147,7 +147,7 @@
   },
   {
     "package": "tin-summer",
-    "platform": ["linux"],
+    "windows": false,
     "version": ""
   },
   {
@@ -156,7 +156,7 @@
   },
   {
     "package": "lfs",
-    "platform": ["linux"],
+    "windows": false,
     "version": ""
   },
   {

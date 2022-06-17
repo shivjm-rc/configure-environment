@@ -1,0 +1,47 @@
+---
+- name: "Install Rust (Windows)"
+  hosts: windows
+  tasks:
+    - name: Install rustup
+      creates: "$env:USERPROFILE\\.cargo\\bin\\rustup.exe"
+      vars:
+        path: "$env:TEMP\\rustup-init.exe"
+      ansible.windows.win_powershell:
+        script: |
+          Invoke-WebRequest -Uri {{ rustupUri }} -OutFile {{ path }}
+          {{ path }} --default-toolchain none {{ rustup.args.join(" ") }}
+        error_action: stop
+
+    - name: Install toolchains
+      ansible.windows.win_powershell:
+        script: |
+          rustup toolchain install {{ item }} --allow-downgrade --profile full {{ rustup.components.join(' ') }}
+        error_action: stop
+      loop: "{{ rustup.toolchains | flatten(level=1) }}"
+
+    # TODO see how to add this idempotently
+    # - name: Install completions
+    #   ansible.windows.win_powershell:
+    #     script: |
+    #       rustup completions powershell >> $PROFILE.CurrentUserCurrentHost
+
+- name: "Install Rust (Linux)"
+  hosts: linux
+  tasks:
+    - name: Install rustup
+      creates: "~/.cargo/bin/rustup"
+      shell: |
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain none -y
+
+    - name: Install toolchains
+      shell:
+        script: |
+          rustup toolchain install {{ item }} --allow-downgrade --profile full {{ rustup.components.join(' ') }}
+      loop: "{{ rustup.toolchains | flatten(level=1) }}"
+
+    - name: Install completions
+      creates: "~/.config/fish/completions/rustup.fis"
+      shell: |
+        rustup completions bash > ~/.local/share/bash-completion/completions/rustup
+        mkdir -p ~/.config/fish/completions
+        rustup completions fish > ~/.config/fish/completions/rustup.fish

@@ -1,0 +1,21 @@
+---
+- name: Install Node.JS via fnm
+  hosts: windows
+  vars:
+    versions: "{{ lookup('file', 'fnm-versions').strip().split() }}"
+  tasks:
+    - ansible.windows.win_powershell:
+        script: |
+          fnm install {{ item }}
+        error_action: stop
+      loop: "{{ versions | flatten(level=1) }}"
+
+- name: Install Node.JS via fnm
+  hosts: linux
+  vars:
+    versions: "{{ lookup('file', 'fnm-versions').strip().split() }}"
+  tasks:
+    - shell:
+        script: |
+          fnm install {{ item }}
+      loop: "{{ versions | flatten(level=1) }}"

@@ -1,0 +1,9 @@
+rustup:
+  components:
+    - "-c rust-src"
+    - "-c rust-analyzer-preview"
+    - "-c rustfmt"
+    - "-c clippy"
+  toolchains:
+    - nightly
+    - stable

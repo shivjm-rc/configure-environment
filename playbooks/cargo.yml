@@ -1,0 +1,36 @@
+---
+- name: Install Cargo packages
+  hosts: windows
+  vars:
+    packages: "{{ lookup('file', 'cargo-packages.json') | from_json }}"
+  tasks:
+    - name: Install versioned packages
+      community.general.cargo:
+        name: "{{ item.package }}"
+        version: "{{ item.version }}"
+        state: present
+      loop: "{{ packages | rejectattr('windows', 'is', false) | selectattr('version', 'defined') }}"
+
+    - name: Install packages
+      ansible.windows.win_powershell:
+        script: |
+          cargo install {{ item.package }} --git {{ item.git }}{{ "--branch " + item.branch if item.branch else "" }}
+      loop: "{{ packages | rejectattr('windows', 'is', false) | rejectattr('version', 'defined') }}"
+
+- name: Install Cargo packages
+  hosts: linux
+  vars:
+    packages: "{{ lookup('file', 'cargo-packages.json') | from_json }}"
+  tasks:
+    - name: Install versioned packages
+      community.general.cargo:
+        name: "{{ item.package }}"
+        version: "{{ item.version }}"
+        state: present
+      loop: "{{ packages | selectattr('version', 'defined') }}"
+
+    - name: Install packages
+      shell:
+        script: |
+          cargo install {{ item.package }} --git {{ item.git }}{{ "--branch " + item.branch if item.branch else "" }}
+      loop: "{{ packages | rejectattr('version', 'defined') }}"

@@ -1,0 +1,21 @@
+---
+- name: Install npm packages
+  hosts: windows
+  vars:
+    packages: "{{ lookup('file', 'npm-packages').strip().split() }}"
+  tasks:
+    - ansible.windows.win_powershell:
+        script: |
+          npm install -g {{ item }}
+        error_action: stop
+      loop: "{{ packages | flatten(level=1) }}"
+
+- name: Install npm packages
+  hosts: linux
+  vars:
+    packages: "{{ lookup('file', 'npm-packages').strip().split() }}"
+  tasks:
+    - shell:
+        script: |
+          npm install -g {{ item }}
+      loop: "{{ packages | flatten(level=1) }}"
