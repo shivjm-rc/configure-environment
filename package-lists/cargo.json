@@ -132,5 +132,35 @@
   {
     "package": "taplo-cli",
     "version": "0.6.3"
+  },
+  {
+    "package": "procs",
+    "version": "0.12.3"
+  },
+  {
+    "package": "choose",
+    "version": "1.3.4"
+  },
+  {
+    "package": "sd",
+    "version": "0.7.6"
+  },
+  {
+    "package": "tin-summer",
+    "platform": ["linux"],
+    "version": ""
+  },
+  {
+    "package": "miniserve",
+    "version": "0.19.5"
+  },
+  {
+    "package": "lfs",
+    "platform": ["linux"],
+    "version": ""
+  },
+  {
+    "package": "htmlq",
+    "version": "0.4.0"
   }
 ]
