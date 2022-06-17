@@ -1,0 +1,8 @@
+---
+collections:
+  - name: community.windows
+    version: 1.10.0
+  - name: community.general
+    version: 4.4.0
+  - name: community.crypto
+    version: 2.2.1
