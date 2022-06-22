@@ -1,0 +1,13 @@
+---
+- name: Install fonts
+  vars:
+    allTheIconsFonts: "{{ lookup('file', 'all-the-icons.json') | from_json }}"
+    iosevkaFonts: "{{ lookup('file', 'iosevka/normal.json') | from_json }}"
+    iosevkaAileFonts: "{{ lookup('file', 'iosevka/aile.json') | from_json }}"
+  roles:
+    - {
+        name: "fonts",
+        fontFilename: "{{ item.key }}",
+        fontFamily: "{{ item.value }}",
+      }
+  loop: "{{ allTheIconsFonts | combine(iosevkaFonts) | combine(iosevkaAileFonts) }}"
