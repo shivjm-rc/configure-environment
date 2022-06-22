@@ -8,3 +8,4 @@ github.com/brancz/gojsontoyaml@v0.1.0
 github.com/rogpeppe/godef@latest
 github.com/zricethezav/gitleaks@v8.0.3
 github.com/multiprocessio/dsq@v0.14.0
+github.com/muesli/duf@v0.8.1
