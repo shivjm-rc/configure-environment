@@ -1,0 +1,33 @@
+* [[https://stackoverflow.com/a/63355278/8492116][Getting font names]]
+#+NAME: get-font-names
+#+BEGIN_SRC pwsh
+    Push-Location "files\$dir"
+    $map = @{}
+    foreach ($file in (gci '*.ttf')) {
+        $col = [System.Drawing.Text.PrivateFontCollection]::new()
+        $col.AddFontFile($file)
+        $fontListInFile = [String[]]$col.Families.Name
+        $col.Dispose()
+        $map[$file.Name] = $fontListInFile[0]
+    }
+
+    Write-Output ($map | ConvertTo-Json)
+#+END_SRC
+
+*** Iosevka
+#+CALL: get-font-names(dir="iosevka\\normal") :results value file :file files/iosevka/normal.json
+
+#+RESULTS:
+[[file:files/iosevka/normal.json]]
+
+*** Iosevka Aile
+#+CALL: get-font-names(dir="iosevka\\aile") :results value file :file files/iosevka/aile.json
+
+#+RESULTS:
+[[file:files/iosevka/aile.json]]
+
+*** all-the-icons
+#+CALL: get-font-names(dir="all-the-icons") :results value file :file files/all-the-icons.json
+
+#+RESULTS:
+[[file:files/all-the-icons.json]]
