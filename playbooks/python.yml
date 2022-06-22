@@ -1,0 +1,36 @@
+---
+- name: Install pipx
+  hosts: all
+  tasks:
+    - name: Install pipx
+      ansible.builtin.pip:
+        name: pipx
+        extra_args: "--user"
+
+- name: Set up Python and install pipx
+  hosts: windows
+  vars:
+    packages: "{{ lookup('file', 'pipx-packages').strip().split() }}"
+  tasks:
+    - name: Import PEP 514 registry file
+      ansible.windows.win_regmerge:
+        path: "{{ scoop.local }}/apps/python/3.10.5/install-pep-514.reg"
+        compare_to: "HKCU:\\Software\\Python\\PythonCore\\3.10"
+
+    - name: Add pipx scripts directory to PATH
+      ansible.windows.win_path:
+        elements:
+          - "{{ ansible_facts['ansible_env']['APPDATA'] }}\\Python310\\Scripts"
+
+    - name: Install pipx packages
+      ansible.windows.win_shell: |
+        pipx install {{ packages.join(' ') }}
+
+- name: Install pipx packages
+  hosts: linux
+  vars:
+    packages: "{{ lookup('file', 'pipx-packages').strip().split() }}"
+  tasks:
+    - name: Install pipx packages
+      shell: |
+        pipx install {{ packages.join(' ') }}

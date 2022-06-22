@@ -18,4 +18,5 @@
 - import_playbook: playbooks/rust.yml
 - import_playbook: playbooks/node.yml
 - import_playbook: playbooks/npm.yml
+- import_playbook: playbooks/python.yml
 - import_playbook: playbooks/fonts.yml
