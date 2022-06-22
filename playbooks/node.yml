@@ -6,7 +6,7 @@
   tasks:
     - ansible.windows.win_powershell:
         script: |
-          fnm install {{ item }}
+          fnm use --install-if-missing {{ item }}
         error_action: stop
       loop: "{{ versions | flatten(level=1) }}"
 
@@ -17,5 +17,5 @@
   tasks:
     - shell:
         script: |
-          fnm install {{ item }}
+          fnm use --install-if-missing {{ item }}
       loop: "{{ versions | flatten(level=1) }}"
