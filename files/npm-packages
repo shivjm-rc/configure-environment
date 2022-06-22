@@ -19,3 +19,5 @@ typescript@4.6.4
 typescript-language-server@0.9.6
 
 mermaid.cli@0.5.1
+
+@emacs-eask/eask@0.6.34
