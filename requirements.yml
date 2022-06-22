@@ -6,3 +6,8 @@ collections:
     version: 4.4.0
   - name: community.crypto
     version: 2.2.1
+
+roles:
+  - src: git+https://github.com/ontic/ansible-role-fonts.git
+    version: 542000e661990a32c4efc342e84da30cd4025c1f
+    name: ontic.fonts

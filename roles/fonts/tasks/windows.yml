@@ -1,0 +1,19 @@
+---
+# based on <https://www.alkanesolutions.co.uk/2021/12/06/installing-fonts-with-powershell/>
+- name: Install font
+  hosts: windows
+  become: true
+  vars:
+    fontName: "{{ fontFamily }} {{ fontFace }} ({{ 'TrueType' if fontFilename.endswith('.ttf') else 'OpenType' }})"
+  tasks:
+    - name: Copy font file
+      copy:
+        src: "{{ fontFilename }}"
+        dest: "{{ ansible_facts['ansible_env']['windir'] }}/Fonts/{{ fontFilename }}"
+
+    - name: Add font to registry
+      ansible.windows.win_regedit:
+        path: "HKLM:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\\{{ fontName }}"
+        state: present
+        data: "{{ fontFilename }}"
+        type: "string"

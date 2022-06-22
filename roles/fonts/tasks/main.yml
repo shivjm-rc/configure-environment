@@ -1,0 +1,8 @@
+---
+- import_playbook: "windows.yml"
+- import_playbook: "linux.yml"
+  hosts: linux
+  vars:
+    type: "{{ 'truetype' if fontFilename.endswith('.ttf') else 'opentype' }}"
+    src: "{{ fontFilename }}"
+    dest: "{{ fontFilename }}"
