@@ -3,9 +3,9 @@ argument_specs:
   main:
     short_description: Set a system-wide environment variable.
     options:
-      name:
+      variableName:
         type: "str"
         required: true
-      value:
+      variableValue:
         type: "str"
         required: true

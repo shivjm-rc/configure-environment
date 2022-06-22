@@ -1,0 +1,28 @@
+---
+- name: Set user environment variable
+  hosts: windows
+  tasks:
+    - name: Set variable
+      ansible.windows.win_environment:
+        name: "{{ variableName }}"
+        value: "{{ variableValue }}"
+        level: user
+        state: present
+
+- name: Set user environment variable
+  hosts: linux
+  tasks:
+    - name: Add variable to .bash_environment
+      lineinfile:
+        path: "~/.bash_environment"
+        search_string: "export {{ variableName }}="
+        line: "export {{ variableName }}={{ variableValue }}"
+        create: true
+        mode: 0755
+        state: present
+
+    - name: Load .bash_environment
+      lineinfile:
+        path: "~/.bashrc"
+        line: "source ~/.bash_environment"
+        state: present
