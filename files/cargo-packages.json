@@ -162,5 +162,20 @@
   {
     "package": "htmlq",
     "version": "0.4.0"
+  },
+  {
+    "package": "lfs",
+    "version": "",
+    "windows": false
+  },
+  {
+    "package": "qsv",
+    "version": "0.56.0",
+    "features": ["full"]
+  },
+  {
+    "package": "wasm-pack",
+    "version": "",
+    "windows": false
   }
 ]
