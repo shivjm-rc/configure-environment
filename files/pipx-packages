@@ -4,5 +4,7 @@ datum
 pre-commit
 yamale
 yamllint
-python-lsp-server[all]
+python-lsp-server[all] pylsp-mypy pyls-isort pylsp-rope
 fonttools
+mypy
+s4cmd

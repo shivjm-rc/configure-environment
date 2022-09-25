@@ -16,8 +16,13 @@ swagger-cli@4.0.4
 release-please@13.4.6
 
 typescript@4.6.4
-typescript-language-server@0.9.6
+typescript-language-server@1.1.0
 
 mermaid.cli@0.5.1
 
 @emacs-eask/eask@0.6.34
+
+stylelint@14.9.1
+stylelint-scss@4.3.0
+postcss@8.4.14
+@csstools/postcss-sass@5.0.1

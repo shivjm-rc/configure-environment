@@ -54,3 +54,12 @@ kind
 shellcheck
 
 doctl
+rclone
+
+smallstep/step
+
+shfmt
+
+graphviz
+
+phantomjs
