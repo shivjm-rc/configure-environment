@@ -177,5 +177,9 @@
     "package": "wasm-pack",
     "version": "",
     "windows": false
+  },
+  {
+    "package": "cargo-unused-features",
+    "version": "0.1.7"
   }
 ]
