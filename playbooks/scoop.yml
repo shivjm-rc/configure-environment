@@ -34,28 +34,11 @@
         script: |-
           scoop config aria2-warning-enabled false
 
-    # TODO add TeraCopy
     - name: Install applications
       community.windows.win_scoop:
         name: "{{ item }}"
         state: present
       loop: "{{ apps | flatten(levels=1) }}"
-
-    - name: Install nerd fonts
-      community.windows.win_scoop:
-        global: yes
-        name: "{{ item }}"
-        state: present
-      loop:
-        - "DejaVuSansMono-NF"
-        - "meslo-nf"
-
-    - name: Install Java
-      community.windows.win_scoop:
-        name: "{{ item }}"
-        state: present
-      loop:
-        - openjdk11
 
     - name: Remove leftovers
       community.windows.win_scoop:

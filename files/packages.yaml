@@ -114,6 +114,14 @@
   scoop: gitleaks
 - name: lens
   scoop: lens
+- name: DejaVuSans Mono nerd font
+  scoop: DejaVuSansMono-NF
+- name: Meslo nerd font
+  scoop: meslo-nf
+- name: Java 11
+  scoop: openjdk11
+  apt: default-jdk
+# TODO Add TeraCopy.
 - name: visualstudio2019buildtools
   chocolatey: visualstudio2019buildtools
 - name: visualstudio2019-workload-vctools
