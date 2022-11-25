@@ -77,3 +77,6 @@ SetMachineEnv -Name "EXE4J_JAVA_HOME" -Value $env:JAVA_HOME
 
 Copy-Item -Path $UserProfileSource\.ripgreprc
 SetMachineEnv -Name "RIPGREP_CONFIG_PATH" -Value "$env:USERPROFILE\.ripgreprc"
+
+
+# TODO: Add Git config, yt-dlp config

@@ -34,3 +34,6 @@
     - name: Install pipx packages
       shell: |
         pipx install {{ packages.join(' ') }}
+
+    # TODO inject `Brotli` and `zopfli` into `fonttools`, even though
+    # they’re listed in requirements.txt anyway

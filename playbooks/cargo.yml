@@ -18,6 +18,9 @@
           cargo install {{ item.package }} --git {{ item.git }}{{ "--branch " + item.branch if item.branch else "" }}{{ "--features " + item.features.join(",") if item.features else "" }}
       loop: "{{ packages | rejectattr('windows', 'is', false) | rejectattr('version', 'defined') }}"
 
+    - ansible.builtin.debug:
+        msg: "wasm-pack must be installed manually on Windows due to the OpenSSL dependency."
+
 - name: Install Cargo packages
   hosts: linux
   vars:
