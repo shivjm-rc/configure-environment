@@ -15,6 +15,15 @@
         - misc
         - nonportable
 
+    - name: Add custom buckets
+      community.windows.win_scoop_bucket:
+        name: "{{ item.name }}"
+        repo: "{{ item.repo }}"
+        state: present
+      loop:
+        - name: "smallstep"
+          repo: "https://github.com/smallstep/scoop-bucket.git"
+
     - name: Install aria2 for faster downloads
       community.windows.win_scoop_bucket:
         name: "aria2"
