@@ -8,13 +8,14 @@
       community.general.cargo:
         name: "{{ item.package }}"
         version: "{{ item.version }}"
+        features: "{{ item.features | default([]) }}"
         state: present
       loop: "{{ packages | rejectattr('windows', 'is', false) | selectattr('version', 'defined') }}"
 
     - name: Install packages
       ansible.windows.win_powershell:
         script: |
-          cargo install {{ item.package }} --git {{ item.git }}{{ "--branch " + item.branch if item.branch else "" }}
+          cargo install {{ item.package }} --git {{ item.git }}{{ "--branch " + item.branch if item.branch else "" }}{{ "--features " + item.features.join(",") if item.features else "" }}
       loop: "{{ packages | rejectattr('windows', 'is', false) | rejectattr('version', 'defined') }}"
 
 - name: Install Cargo packages
@@ -26,11 +27,12 @@
       community.general.cargo:
         name: "{{ item.package }}"
         version: "{{ item.version }}"
+        features: "{{ item.features | default([]) }}"
         state: present
       loop: "{{ packages | selectattr('version', 'defined') }}"
 
     - name: Install packages
       shell:
         script: |
-          cargo install {{ item.package }} --git {{ item.git }}{{ "--branch " + item.branch if item.branch else "" }}
+          cargo install {{ item.package }} --git {{ item.git }}{{ "--branch " + item.branch if item.branch else "" }}{{ "--features " + item.features.join(",") if item.features else "" }}
       loop: "{{ packages | rejectattr('version', 'defined') }}"
