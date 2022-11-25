@@ -8,3 +8,4 @@ python-lsp-server[all] pylsp-mypy pyls-isort pylsp-rope
 fonttools
 mypy
 s4cmd
+pgcli
