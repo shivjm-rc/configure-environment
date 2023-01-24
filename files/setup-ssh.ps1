@@ -11,7 +11,7 @@ param(
     [Parameter()]
     [string]$sshKeyFilePath = "$Env:ProgramData\ssh\administrators_authorized_keys",
     [Parameter()]
-    [string]$opensshUrl = "https://github.com/PowerShell/Win32-OpenSSH/releases/download/v8.9.1.0p1-Beta/OpenSSH-Win64.zip"
+    [string]$opensshUrl = "https://github.com/PowerShell/Win32-OpenSSH/releases/download/v9.1.0.0p1-Beta/OpenSSH-Win64.zip"
 )
 
 Import-Module -Name "NetSecurity"
