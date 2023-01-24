@@ -3,7 +3,6 @@
   hosts: windows
   tasks:
     - name: Install rustup
-      creates: "$env:USERPROFILE\\.cargo\\bin\\rustup.exe"
       vars:
         path: "$env:TEMP\\rustup-init.exe"
       ansible.windows.win_powershell:
@@ -11,6 +10,7 @@
           Invoke-WebRequest -Uri {{ rustupUri }} -OutFile {{ path }}
           {{ path }} --default-toolchain none {{ rustup.args.join(" ") }}
         error_action: stop
+        creates: "$env:USERPROFILE\\.cargo\\bin\\rustup.exe"
 
     - name: Install toolchains
       ansible.windows.win_powershell:
@@ -29,9 +29,10 @@
   hosts: linux
   tasks:
     - name: Install rustup
-      creates: "~/.cargo/bin/rustup"
-      shell: |
-        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain none -y
+      shell:
+        script: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain none -y
+        creates: "~/.cargo/bin/rustup"
 
     - name: Install toolchains
       shell:
@@ -40,8 +41,9 @@
       loop: "{{ rustup.toolchains | flatten(level=1) }}"
 
     - name: Install completions
-      creates: "~/.config/fish/completions/rustup.fis"
-      shell: |
-        rustup completions bash > ~/.local/share/bash-completion/completions/rustup
-        mkdir -p ~/.config/fish/completions
-        rustup completions fish > ~/.config/fish/completions/rustup.fish
+      shell:
+        script: |
+          rustup completions bash > ~/.local/share/bash-completion/completions/rustup
+          mkdir -p ~/.config/fish/completions
+          rustup completions fish > ~/.config/fish/completions/rustup.fish
+        creates: "~/.config/fish/completions/rustup.fis"
