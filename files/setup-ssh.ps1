@@ -65,7 +65,7 @@ Start-Service sshd
 Set-Service wuauserv -StartupType $wuauservStartType
  
 # Configure PowerShell as the default shell
-New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "$Env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -PropertyType String -Force
+New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "$env:ProgramFiles\PowerShell\7\pwsh.exe" -PropertyType String -Force
  
 # Restart the service
 Restart-Service sshd
