@@ -7,7 +7,7 @@
 #>
 param(
     [Parameter(Mandatory = $True, Position = 1)]
-    [string]$sshKey,
+    [string]$rawSshKey,
     [Parameter()]
     [string]$sshKeyFilePath = "$Env:ProgramData\ssh\administrators_authorized_keys",
     [Parameter()]
@@ -44,7 +44,7 @@ else {
 }
 
 # Configure SSH public key
-Set-Content -Path $sshKeyFilePath -Value $sshKey
+Set-Content -Path $sshKeyFilePath -Value $rawSshKey
  
 $adminsGroup = "S-1-5-32-544"
 # set acl on administrators_authorized_keys
