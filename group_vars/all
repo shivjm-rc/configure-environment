@@ -7,3 +7,4 @@ rustup:
   toolchains:
     - nightly
     - stable
+  args: []
