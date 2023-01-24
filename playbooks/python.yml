@@ -13,7 +13,7 @@
     packages: "{{ lookup('file', 'pipx-packages').strip().split() }}"
   tasks:
     - name: Import PEP 514 registry file
-      ansible.windows.win_regmerge:
+      community.windows.win_regmerge:
         path: "{{ scoop.local }}/apps/python/3.10.5/install-pep-514.reg"
         compare_to: "HKCU:\\Software\\Python\\PythonCore\\3.10"
 
