@@ -36,7 +36,7 @@ finally {
     Pop-Location
 }
 
-if (Get-NetFirewallRule -Name sshd) {
+if (Get-NetFirewallRule -Name sshd -ErrorAction SilentlyContinue) {
     Write-Output "Found matching rules, skipping creation…"
 }
 else {
