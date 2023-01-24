@@ -1,0 +1,25 @@
+DOCUMENTATION:
+  name: find_dictionary_key
+  author: Shiv Jha-Mathur
+  short_description: Find the first key from a list that has a value in the dictionary and return the value.
+  description:
+    - Find the first key from a list that has a value in the dictionary and return the value.
+    - Throws an error if no key in the list has a value.
+  positional: _input
+  options:
+    candidates:
+      description: A list (or other iterable) of strings.
+      type: list(string)
+      required: true
+    dictionary:
+      description: A dictionary.
+      type: dict
+      required: true
+
+EXAMPLES: |
+  # Find a key
+  name: "{{ find_dictionary_key(['option_a', 'second_choice'], all_options)[0] }}"
+RETURN:
+  _value:
+    description: The matching key and its value, if found.
+    type: tuple(string, any)
