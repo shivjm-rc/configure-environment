@@ -121,6 +121,10 @@
 - name: Java 11
   scoop: openjdk11
   apt: default-jdk
+- name: Java 17
+  scoop: openjdk17
+- name: qBittorrent
+  scoop: qbittorrent
 # TODO Add TeraCopy.
 - name: visualstudio2019buildtools
   chocolatey: visualstudio2019buildtools
@@ -284,6 +288,9 @@
 - name: cargo-unused-features
   cargo: cargo-unused-features
   version: 0.1.7
+- name: ddt
+  cargo: ddt
+  version: ""
 - name: pnpm
   npm: pnpm
   version: 7.4.1
@@ -409,3 +416,5 @@
 - name: yaml-to-json-go
   go: github.com/jdockerty/yaml-to-json-go
   version: a638fe650ecf94910a9cf8a5f2c83ee99d77e4a7
+- name: ActivePerl
+  chocolatey: activeperl
