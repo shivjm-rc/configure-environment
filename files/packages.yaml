@@ -421,3 +421,5 @@
   version: a638fe650ecf94910a9cf8a5f2c83ee99d77e4a7
 - name: ActivePerl
   chocolatey: activeperl
+- name: Git filter-repo
+  scoop: git-filter-repo
