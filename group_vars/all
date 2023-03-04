@@ -1,10 +1,11 @@
 rustup:
   components:
     - "-c rust-src"
-    - "-c rust-analyzer-preview"
+    - "-c rust-analyzer"
     - "-c rustfmt"
     - "-c clippy"
   toolchains:
     - nightly
     - stable
+  profile: default
   args: []
