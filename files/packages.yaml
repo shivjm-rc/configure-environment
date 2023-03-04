@@ -48,8 +48,6 @@
   scoop: plantuml
 - name: putty
   scoop: putty
-- name: python
-  scoop: python
 - name: ruby
   scoop: ruby
 - name: screentogif
