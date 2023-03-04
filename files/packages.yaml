@@ -232,8 +232,7 @@
   version: 0.13.0
 - name: exa
   cargo: exa
-  git: https://github.com/skyline75489/exa.git
-  branch: chesterliu/dev/win-support
+  git: https://github.com/ogham/exa.git
 - name: just
   cargo: just
   version: 1.2.0
