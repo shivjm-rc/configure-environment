@@ -125,6 +125,8 @@
   scoop: openjdk17
 - name: qBittorrent
   scoop: qbittorrent
+- name: Authy
+  scoop: authy
 # TODO Add TeraCopy.
 - name: visualstudio2019buildtools
   chocolatey: visualstudio2019buildtools
