@@ -7,3 +7,4 @@ mingw-w64-ucrt-x86_64-extra-cmake-modules
 mingw-w64-ucrt-x86_64-cmake
 mingw-w64-ucrt-x86_64-gcc
 mingw-w64-ninja
+rsync
