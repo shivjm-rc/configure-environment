@@ -2,9 +2,9 @@
 - name: Install Chocolatey apps
   hosts: windows
   vars:
-    apps: "{{ lookup('file', 'chocolatey-packages').strip().split() }}"
+    apps: "{{ lookup('file', '../files/chocolatey-packages').strip().split() }}"
   tasks:
     - win_chocolatey:
         name: "{{ item }}"
         state: latest
-      loop: "{{ apps | flatten(level=1) }}"
+      loop: "{{ apps | flatten(levels=1) }}"
