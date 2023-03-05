@@ -2,20 +2,20 @@
 - name: Install Go packages
   hosts: windows
   vars:
-    packages: "{{ lookup('file', 'go-packages').strip().split() }}"
+    packages: "{{ lookup('file', '../files/go-packages').strip().split() }}"
   tasks:
     - ansible.windows.win_powershell:
         script: |
           go install {{ item }}
         error_action: stop
-      loop: "{{ packages | flatten(level=1) }}"
+      loop: "{{ packages | flatten(levels=1) }}"
 
 - name: Install Go packages
   hosts: linux
   vars:
-    packages: "{{ lookup('file', 'go-packages').strip().split() }}"
+    packages: "{{ lookup('file', '../files/go-packages').strip().split() }}"
   tasks:
     - shell:
         script: |
           go install {{ item }}
-      loop: "{{ packages | flatten(level=1) }}"
+      loop: "{{ packages | flatten(levels=1) }}"
