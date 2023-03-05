@@ -9,7 +9,7 @@
     - name: Copy font file
       copy:
         src: "{{ fontFilename }}"
-        dest: "{{ ansible_facts['ansible_env']['windir'] }}/Fonts/{{ fontFilename }}"
+        dest: "{{ ansible_env['windir'] }}/Fonts/{{ fontFilename }}"
 
     - name: Add font to registry
       ansible.windows.win_regedit:
