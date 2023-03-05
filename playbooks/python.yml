@@ -1,4 +1,11 @@
 ---
+- name: Install Python
+  hosts: windows
+  tasks:
+    - community.windows.win_scoop:
+        name: python
+        state: present
+
 - name: Install pipx
   hosts: all
   tasks:
