@@ -2,8 +2,13 @@
 - name: Install Scoop applications
   hosts: windows
   vars:
-    apps: "{{ lookup('file', 'scoop-packages').strip().split() }}"
+    apps: "{{ lookup('file', '../files/scoop-packages').strip().split() }}"
   tasks:
+    - name: Install aria2 for faster downloads
+      community.windows.win_scoop:
+        name: "aria2"
+        state: present
+
     - name: Add buckets
       community.windows.win_scoop_bucket:
         name: "{{ item }}"
@@ -23,11 +28,6 @@
       loop:
         - name: "smallstep"
           repo: "https://github.com/smallstep/scoop-bucket.git"
-
-    - name: Install aria2 for faster downloads
-      community.windows.win_scoop_bucket:
-        name: "aria2"
-        state: present
 
     - name: Disable aria2 warning
       ansible.windows.win_powershell:
