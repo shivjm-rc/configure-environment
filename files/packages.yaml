@@ -424,3 +424,5 @@
   chocolatey: activeperl
 - name: Git filter-repo
   scoop: git-filter-repo
+- name: Sysinternals Suite
+  scoop: sysinternals
