@@ -2,7 +2,7 @@
 - name: Install Cargo packages
   hosts: windows
   vars:
-    packages: "{{ lookup('file', 'cargo-packages.json') | from_json }}"
+    packages: "{{ lookup('file', '../files/cargo-packages.json') | from_json }}"
   tasks:
     - name: Install versioned packages
       community.general.cargo:
@@ -24,7 +24,7 @@
 - name: Install Cargo packages
   hosts: linux
   vars:
-    packages: "{{ lookup('file', 'cargo-packages.json') | from_json }}"
+    packages: "{{ lookup('file', '../files/cargo-packages.json') | from_json }}"
   tasks:
     - name: Install versioned packages
       community.general.cargo:
