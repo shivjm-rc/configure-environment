@@ -1,3 +1,15 @@
+- name: Git
+  scoop: git
+- name: extras (Scoop bucket)
+  scoop_bucket: extras
+- name: nerd-fonts (Scoop bucket)
+  scoop_bucket: nerd-fonts
+- name: java (Scoop bucket)
+  scoop_bucket: java
+- name: misc (Scoop bucket)
+  scoop_bucket: misc
+- name: nonportable (Scoop bucket)
+  scoop_bucket: nonportable
 - name: starship
   scoop: starship
 - name: 7zip
@@ -100,6 +112,9 @@
   scoop: doctl
 - name: rclone
   scoop: rclone
+- name: smallstep
+  scoop_bucket: smallstep
+  repo: https://github.com/smallstep/scoop-bucket.git
 - name: smallstep/step
   scoop: smallstep/step
 - name: shfmt
