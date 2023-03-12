@@ -19,8 +19,8 @@
       include_role:
         name: environment
       vars:
-        name: "{{ item[0] }}"
-        value: "{{ item[1] }}"
+        variableName: "{{ item[0] }}"
+        variableValue: "{{ item[1] }}"
       loop:
         - ["SCOOP", "{{ scoop.local }}"]
         - ["SCOOPGLOBAL", "{{ scoop.global }}"]
