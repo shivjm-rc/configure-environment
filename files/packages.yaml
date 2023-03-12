@@ -426,3 +426,5 @@
   scoop: git-filter-repo
 - name: Sysinternals Suite
   scoop: sysinternals
+- name: gomplate
+  go: github.com/hairyhenderson/gomplate/cmd/gomplate@v3.11.4
