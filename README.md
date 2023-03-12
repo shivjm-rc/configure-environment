@@ -1,11 +1,20 @@
 # Configure PC
 
-1. (Windows) Install/update PowerShell.
-2. (Windows) Optimize PowerShell performance.
+1. (Windows) [Install/update PowerShell.](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3#installing-the-msi-package)
+2. (Windows) Optimize PowerShell performance if possible (requires ngen.exe).
 3. (Windows) [Set up OpenSSH-Win64.](./files/setup-ssh.ps1) (Set `ansible_shell_type=powershell` in Ansible invocations.)
-4. (Windows) Install WSL2.
-5. (WSL2) Install Ansible.
-6. (WSL2) Run Ansible (<kbd>wsl -- …</kbd>).
+4. (Windows) Install Hyper-V. Admin PowerShell: `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All`.
+5. (Windows) Install WSL2: `wsl --install && Restart-Computer`.
+6. (Ubuntu) Install Ansible `python3 -m pip install --user ansible`.
+7. (Ubuntu) Create hosts file, substituting IP and using correct port:
+   ```
+   [windows]
+   10.0.0.50:55949
+   ```
+8. (Ubuntu) Copy SSH private key to WSL filesystem and run `chmod 0600`.
+9. (Ubuntu) Run `ansible-galaxy role install -r requirements.yml &&
+   ansible-galaxy collection install -r requirements.yml`.
+10. (Ubuntu) Run Ansible (<kbd>wsl -- …</kbd>).
 
 ## Windows
 
