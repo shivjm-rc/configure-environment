@@ -1,0 +1,11 @@
+---
+- name: Install npm packages
+  hosts: all
+  tasks:
+    - npm:
+        name: "{{ parts[0] }}"
+        version: "{{ parts[1] }}"
+        state: present
+        global: yes
+      vars:
+        parts: "{{ current_package['npm'] | rsplit('@', 2) }}"

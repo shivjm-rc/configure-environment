@@ -1,0 +1,7 @@
+---
+- name: Install application
+  hosts: windows
+  tasks:
+    - community.windows.win_scoop:
+        name: "{{ package['scoop'] }}"
+        state: present

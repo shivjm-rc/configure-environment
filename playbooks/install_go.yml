@@ -1,0 +1,12 @@
+---
+- name: Install Go apps
+  hosts: windows
+  tasks:
+    - win_powershell: |
+        go install {{ package['go'] }}@{{ package['version'] }}
+
+- name: Install Go apps
+  hosts: linux
+  tasks:
+    - shell: |
+        go install {{ package['go'] }}@{{ package['version'] }}

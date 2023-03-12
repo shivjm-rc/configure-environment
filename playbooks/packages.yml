@@ -1,0 +1,24 @@
+---
+- name: Install packages
+  hosts: all
+  vars:
+    packages: "{{ lookup('file', '../files/packages.yaml') | from_yaml }}"
+    windows_sources: [scoop, chocolatey, cargo, npm, pipx, go]
+    linux_sources: [cargo, npm, pipx, go]
+  tasks:
+    - name: Install package
+      include_tasks: "install_{{ find_dictionary_key(windows_sources, item) }}.yml"
+      vars:
+        package: "{{ item }}"
+      loop: "{{ packages }}"
+      when: "ansible_os_family == 'Windows'"
+
+    - name: Install package
+      include_tasks: "install_{{ find_dictionary_key(linux_sources, item) }}.yml"
+      loop: "{{ packages }}"
+      vars:
+        package: "{{ item }}"
+      when: "ansible_os_family != 'Windows'"
+
+    - ansible.builtin.debug:
+        msg: "wasm-pack must be installed manually on Windows due to the OpenSSL dependency."

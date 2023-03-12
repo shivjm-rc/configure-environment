@@ -1,0 +1,8 @@
+---
+- name: Install pipx package
+  ansible.windows.win_shell: "pipx install {{ current_package['pipx'] }}"
+  when: "ansible_os_family == 'Windows'"
+
+- name: Install pipx package
+  shell: "pipx install {{ current_package['pipx'] }}"
+  when: "ansible_os_family != 'Windows'"

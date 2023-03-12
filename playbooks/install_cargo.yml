@@ -1,0 +1,27 @@
+---
+- name: Install Cargo packages
+  hosts: all
+  tasks:
+    - name: Install versioned package
+      community.general.cargo:
+        name: "{{ current_package['cargo'] }}"
+        version: "{{ current_package['version'] }}"
+        features: "{{ current_package['features'] | default([]) }}"
+        state: present
+      when: "defined(current_package['version'])"
+
+    - name: Install package from Git
+      ansible.windows.win_powershell:
+        script: |
+          cargo install {{ current_package['cargo'] }} --git {{ current_package['git'] }}{{ "--branch " + current_package['branch'] if current_package['branch'] else "" }}{{ "--features " + current_package['features'].join(",") if current_package['features'] else "" }}
+      when:
+        - "not defined(current_package['version'])"
+        - "ansible_os_family == 'Windows'"
+
+    - name: Install package from Git
+      shell:
+        script: |
+          cargo install {{ current_package['cargo'] }} --git {{ current_package['git'] }}{{ "--branch " + current_package['branch'] if current_package['branch'] else "" }}{{ "--features " + current_package['features'].join(",") if current_package['features'] else "" }}
+      when:
+        - "not defined(current_package['version'])"
+        - "ansible_os_family != 'Windows'"

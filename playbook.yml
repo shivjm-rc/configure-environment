@@ -27,9 +27,22 @@
         - ["ChocolateyInstall", "{{ chocolatey.directory }}"]
 
 - import_playbook: playbooks/scoop.yml
-- import_playbook: playbooks/choco.yml
+- import_playbook: playbooks/python.yml
 - import_playbook: playbooks/rust.yml
 - import_playbook: playbooks/node.yml
-- import_playbook: playbooks/npm.yml
-- import_playbook: playbooks/python.yml
-- import_playbook: playbooks/fonts.yml
+# - import_playbook: playbooks/npm.yml
+- name: Install fonts
+  hosts: all
+  tasks:
+    - include_tasks: tasks/install_fonts.yml
+
+- import_playbook: playbooks/packages.yml
+
+- hosts: windows
+  tasks:
+    - name: Remove Scoop leftovers
+      community.windows.win_scoop:
+        name: "{{ item }}"
+        state: absent
+      loop:
+        - vcredist2019

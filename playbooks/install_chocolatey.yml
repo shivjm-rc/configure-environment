@@ -1,0 +1,7 @@
+---
+- name: Install Chocolatey apps
+  hosts: windows
+  tasks:
+    - win_chocolatey:
+        name: "{{ package['chocolatey'] }}"
+        state: latest
