@@ -1,4 +1,17 @@
 ---
+- hosts: windows
+  tasks:
+    - name: Check for PowerShell 7
+      ansible.windows.win_powershell:
+        script: |
+          $PSVersionTable.PSVersion.Major
+        arguments:
+          - -ExecutionPolicy
+          - ByPass
+      register: pwsh_output
+      failed_when:
+        - "pwsh_output.output[0] < 5"
+
 - name: Set Scoop & Chocolatey environment variables
   hosts: windows
   tasks:
