@@ -1,3 +1,5 @@
+- name: Clang
+  vcpkg: "llvm[clang,clang-tools-extra]"
 - name: Git
   scoop: git
 - name: extras (Scoop bucket)
@@ -443,3 +445,27 @@
   scoop: sysinternals
 - name: gomplate
   go: github.com/hairyhenderson/gomplate/cmd/gomplate@v3.11.4
+- name: difftastic
+  scoop: difftastic
+- name: erdtree
+  cargo: erdtree
+- name: dog (DNS client)
+  scoop: dog
+- name: sad (Space Age seD)
+  cargo: sad
+  git: https://github.com/ms-jpq/sad
+  branch: senpai
+- name: dvm (Deno Version Manager)
+  cargo: dvm
+- name: tree-sitter
+  npm: tree-sitter
+- name: tree-sitter-yaml
+  npm: tree-sitter-yaml
+- name: adb (Android Debugger)
+  scoop: adb
+- name: sqlite
+  vcpkg: sqlite3
+- name: k9s (Kubernetes TUI)
+  scoop: k9s
+- name: popeye (Kubernetes Cluster Sanitizer)
+  go: github.com/derailed/popeye@v0.11.1
