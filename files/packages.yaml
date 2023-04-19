@@ -469,3 +469,7 @@
   scoop: k9s
 - name: popeye (Kubernetes Cluster Sanitizer)
   go: github.com/derailed/popeye@v0.11.1
+- name: ajv-cli (Another JavaScript Validator)
+  npm: ajv-cli
+- name: ajv-formats (Another JavaScript Validator formats)
+  npm: ajv-formats
