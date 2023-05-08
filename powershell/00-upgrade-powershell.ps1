@@ -11,5 +11,5 @@ param()
 $ErrorActionPreference = "Stop"
 
 if ($PSVersionTable.PSVersion -lt ((Invoke-RestMethod 'https://raw.githubusercontent.com/PowerShell/PowerShell/master/tools/metadata.json').ReleaseTag -replace '^v')) {
-    iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI -Quiet"
+    Invoke-Expression "& { $(Invoke-RestMethod https://aka.ms/install-powershell.ps1) } -UseMSI -Quiet"
 }
