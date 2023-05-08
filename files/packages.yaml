@@ -50,6 +50,8 @@
   scoop: msys2
 - name: openssl
   scoop: openssl
+- name: OpenSSL library
+  apt: libssl-dev
 - name: pandoc
   scoop: pandoc
 - name: pgadmin4-np
@@ -131,8 +133,15 @@
   scoop: lens
 - name: DejaVuSans Mono nerd font
   scoop: DejaVuSansMono-NF
+  apt: fonts-dejavu-core
 - name: Meslo nerd font
   scoop: meslo-nf
+- name: Symbola font
+  scoop: font-symbola
+  apt: fonts-symbola
+- name: Open Sans
+  scoop: Open-Sans
+  apt: fonts-open-sans
 - name: Java 11
   scoop: openjdk11
   apt: default-jdk
@@ -237,7 +246,7 @@
   version: 0.9.1
 - name: tidy-viewer
   cargo: tidy-viewer
-  version: 1.4.5
+  version: 1.4.30
 - name: fnm
   cargo: fnm
   version: 1.29.2
@@ -473,3 +482,8 @@
   npm: ajv-cli
 - name: ajv-formats (Another JavaScript Validator formats)
   npm: ajv-formats
+- name: magic-wormhole
+  scoop: magic-wormhole
+  apt: magic-wormhole
+- name: MiKTeX
+  scoop: miktex
