@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
- Updates package versions in the given file (skipping Git repositories).
+ Updates npm package versions in the given file (skipping Git repositories).
 #>
 param(
     [Parameter(Mandatory = $True, Position = 1)]
@@ -8,31 +8,27 @@ param(
     $filename
 )
 
-$script:separator = @"
-@
-"@.Trim()
+$json = (yq -o json . $filename | Out-String)
+$packages = (ConvertFrom-Json $json -AsHashtable)
 
-Function script:Get-Newest($line) {
-    $parts = $line.Trim() -split $script:separator
-    $name = $parts[0]
+$new = @()
 
-    $version = (npm show $name version)
+foreach ($package in $packages) {
+    $name = $package.npm
 
-    return "$name@$version"
-}
-
-Function script:Is-Package($line) {
-    return $line -like "*@*"
-}
-
-$script:lines = (Get-Content $filename)
-
-foreach ($line in $script:lines) {
-    if (Is-Package($line)) {
-        Write-Debug "Package found: $line"
-        Write-Output (script:Get-Newest $line)
-    } else {
-        Write-Debug "No package: $line"
-        Write-Output $line
+    if ($null -eq $name) {
+        $new += $package
+        continue
     }
+
+    if ($null -ne $package.version) {
+        $package.version = (npm show $name version)
+    } else {
+        Write-Debug "Skipping non-versioned package $($package.package)"
+    }
+
+    $new += $package
 }
+
+Set-Content $filename (ConvertTo-Json $new | yq -P .)
+prettier -w $filename
