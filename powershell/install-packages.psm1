@@ -67,7 +67,7 @@ Function Install-Cargo($name, $version, $features, $git, $branch) {
 
 Function Install-Npm($name, $version) {
     if ($null -ne $version) {
-        npm install $name@$version
+        npm install -g $name@$version
     } else {
         npm install -g $name
     }
