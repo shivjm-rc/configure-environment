@@ -41,12 +41,21 @@ foreach ($line in $cargoUpdateOutput) {
     $packages[$name] = $version
 }
 
-$existing = ConvertFrom-Json (Get-Content $filename -Raw)
+# `ConvertFrom-Yaml` doesn’t preserve order, whereas
+# `ConvertFrom-Json` does.
+$rawJson = (yq -o json . $filename | Out-String)
+$existing = ConvertFrom-Json $rawJson -AsHashtable
 
 $new = @()
 
 foreach ($package in $existing) {
-    $updated = $packages[$package.package]
+    $name = $package.cargo
+    if ($null -eq $name) {
+        $new += $package
+        continue
+    }
+
+    $updated = $packages[$name]
 
     if ($null -ne $package.version -and $null -ne $updated -and !($null -ne $updated.platform -and "windows" -notin $updated.platform)) {
         $package.version = $updated
@@ -57,5 +66,5 @@ foreach ($package in $existing) {
     $new += $package
 }
 
-Set-Content $filename (ConvertTo-Json $new)
+Set-Content $filename (ConvertTo-Json $new | yq -P .)
 prettier -w $filename
