@@ -379,8 +379,6 @@
   pipx: black
 - name: pdm
   pipx: pdm
-- name: datum
-  pipx: datum
 - name: pre-commit
   pipx: pre-commit
 - name: yamale
