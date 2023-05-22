@@ -24,4 +24,6 @@
   };
 
   networking.hostName = "A-PC";
+
+  time.timeZone = "Asia/Calcutta";
 }
