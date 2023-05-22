@@ -217,17 +217,15 @@
     zplug = {
       enable = true;
       plugins = [
-        { name = "zsh-users/zsh-syntax-highlighting"; }
+        { name = "zdharma-continuum/fast-syntax-highlighting"; }
         { name = "Aloxaf/fzf-tab"; }
         { name = "chisui/zsh-nix-shell"; }
+        { name = "jeffreytse/zsh-vi-mode"; }
       ];
     };
 
     initExtra = ''
     bindkey -v
-    autoload -Uz edit-command-line
-    zle -N edit-command-line
-    bindkey -M vicmd '^v' edit-command-line
 
     zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
     zstyle ':completion:*:descriptions' format '[%d]'
