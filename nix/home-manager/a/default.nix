@@ -206,6 +206,9 @@
       remount-x11 = "sudo mount -o remount,rw /tmp/.X11-unix";
 
       pp = "p -";
+
+      g = "git";
+      n = "npm";
     };
 
     history = {
