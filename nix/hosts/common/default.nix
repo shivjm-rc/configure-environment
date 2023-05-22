@@ -1,7 +1,7 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 
-{ inputs, outputs, lib, config, pkgs, modulesPath, ... }: {
+{ inputs, outputs, lib, config, pkgs, modulesPath, nixpkgs-unstable, ... }: {
   # You can import other NixOS modules here
   imports = [
     inputs.home-manager.nixosModules.home-manager
@@ -20,7 +20,7 @@
 
   home-manager = {
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs outputs; };
+    extraSpecialArgs = { inherit inputs outputs; unstable = nixpkgs-unstable; };
   };
 
   nixpkgs = {
