@@ -1,0 +1,2 @@
+wt_lua_dir = "D:/Media/src/my/configure-environment/wezterm"
+return dofile (wt_lua_dir .. "/wezterm.lua")

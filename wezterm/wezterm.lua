@@ -123,22 +123,10 @@ local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 -- The filled in variant of the > symbol
 local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
 
---- I would like these to be in separate files but `require`-ing them is tricky.
-local windowsConfig = {
-   default_prog = "wsl",
-   font_size = 14.0,
-   initial_rows = 50,
-   initial_cols = 150,
-};
-local linuxConfig = {
-   default_prog = (os.getenv("HOME") .. "/.nix-profile/bin/zsh"),
-   font_size = 12.0,
-   initial_rows = 35,
-   initial_cols = 100,
-};
 local isWindows = wezterm.target_triple == "x86_64-pc-windows-msvc";
 
-local systemConfig = isWindows and windowsConfig or linuxConfig;
+--- Expects `wt_lua_dir` to be set by the calling file.
+local systemConfig = isWindows and (dofile (wt_lua_dir .. '/system/windows.lua')) or (dofile (wt_lua_dir .. '/system/linux.lua'));
 
 return {
   default_prog = {systemConfig.default_prog},
