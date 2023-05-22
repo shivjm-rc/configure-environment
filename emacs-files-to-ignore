@@ -1,0 +1,4 @@
+early-init.el
+forge-database.sqlite
+org-persist
+recentf

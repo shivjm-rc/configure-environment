@@ -48,11 +48,11 @@ SetMachineEnv -Name "GNUPG_HOME" -Value $script:GpgHome
 SetMachineEnv -Name "GNUPGHOME" -Value $script:GpgHome
 
 Write-Output "Copying Emacs config…"
-$script:EmacsDirectoriesToExclude = @('straight', '.cache', 'eln-cache', 'elpa', 'elpy', 'image-dired', 'server', 'snippets', '.lsp-session*')
+$script:EmacsDirectoriesToInclude = (Get-Content "../emacs-files-to-ignore")
 $script:EmacsSourceDirectory = "$UserProfileSource\AppData\Roaming\.emacs.d"
 $script:EmacsDestinationDirectory = "$env:APPDATA\.emacs.d"
 New-Item -Path $script:EmacsDestinationDirectory -Force -ItemType Directory
-Copy-Item -Path $script:EmacsSourceDirectory\* -Recurse -Exclude $script:EmacsDirectoriesToExclude -Destination $script:EmacsDestinationDirectory -Force
+Copy-Item -Path $script:EmacsSourceDirectory\* -Recurse -Include $script:EmacsDirectoriesToExclude -Destination $script:EmacsDestinationDirectory -Force
 
 Write-Output "Installing all-the-icons fonts…"
 $script:AllTheIconsCommit = ($AllTheIconsCommit -eq "" ? "master" : $AllTheIconsCommit)
