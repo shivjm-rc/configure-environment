@@ -32,6 +32,14 @@
         "aarch64-darwin"
         "x86_64-darwin"
       ];
+      mkNixos = modules: nixpkgs.lib.nixosSystem {
+        inherit modules;
+        specialArgs = { inherit inputs outputs; };
+      };
+      mkHome = modules: pkgs: home-manager.lib.homeManagerConfiguration {
+        inherit modules pkgs;
+        extraSpecialArgs = { inherit inputs outputs; };
+      };
     in
     rec {
       # Your custom packages
@@ -59,14 +67,7 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
-        # FIXME replace with your hostname
-        A-PC = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            # > Our main nixos configuration file <
-            ./nixos/configuration.nix
-          ];
-        };
+        a-pc = mkNixos [ ./hosts/a-pc ];
       };
 
       # Standalone home-manager configuration entrypoint

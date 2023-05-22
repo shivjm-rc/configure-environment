@@ -13,29 +13,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
-
-    # Import your generated (nixos-generate-config) hardware configuration
-    ./hardware-configuration.nix
-    "${modulesPath}/profiles/minimal.nix"
-
-    inputs.nixos-wsl.nixosModules.wsl
   ];
-
-  wsl = {
-    enable = true;
-    automountPath = "/mnt";
-    defaultUser = "a";
-    startMenuLaunchers = true;
-
-    # Enable native Docker support
-    docker-native.enable = true;
-
-    # Enable integration with Docker Desktop (needs to be installed)
-    docker-desktop.enable = true;
-
-    # TODO: Enable this with newer version of NixOS-WSL.
-    # nativeSystemd = true;
-  };
 
   nixpkgs = {
     # You can add overlays here
@@ -81,12 +59,6 @@
   };
 
   # FIXME: Add the rest of your current configuration
-
-  # TODO: Set your hostname
-  # networking.hostName = "your-hostname";
-
-  # TODO: This is just an example, be sure to use whatever bootloader you prefer
-  # boot.loader.systemd-boot.enable = true;
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
