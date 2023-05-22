@@ -138,6 +138,7 @@ return {
   harfbuzz_features = {},
   initial_rows = systemConfig.initial_rows,
   initial_cols = systemConfig.initial_cols,
+  launch_menu = systemConfig.launch_menu or {},
   tab_max_width = 20,
   -- color_scheme = "primary",
   scrollback_lines = 9999,
