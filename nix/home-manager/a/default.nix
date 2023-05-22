@@ -61,6 +61,9 @@
 
       character.success_symbol = "[❯](green)[❯](bold green)";
       character.error_symbol = " [✗](bold red)";
+
+      cmd_duration.min_time = 500;
+      cmd_duration.show_milliseconds = true;
     };
   };
 
