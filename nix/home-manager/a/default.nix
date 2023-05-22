@@ -43,8 +43,11 @@
     homeDirectory = "/home/a";
   };
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
+  home.sessionVariables = {
+    EDITOR = "vim";
+    KEYTIMEOUT = "1";
+  };
+
   home.packages = with pkgs; [
     ffmpeg
     curl
@@ -221,6 +224,11 @@
     };
 
     initExtra = ''
+    bindkey -v
+    autoload -Uz edit-command-line
+    zle -N edit-command-line
+    bindkey -M vicmd '^v' edit-command-line
+
     zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
     zstyle ':completion:*:descriptions' format '[%d]'
     zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
@@ -250,6 +258,12 @@
       "--cmd"
       "p"
     ];
+  };
+
+  programs.vim = {
+    enable = true;
+    # Not supported in older home-manager.
+    # defaultEditor = true;
   };
 
   services.pueue.enable = true;
