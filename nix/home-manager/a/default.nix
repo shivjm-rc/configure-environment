@@ -221,9 +221,9 @@
       enable = true;
       plugins = [
         { name = "zdharma-continuum/fast-syntax-highlighting"; }
+        { name = "jeffreytse/zsh-vi-mode"; }
         { name = "Aloxaf/fzf-tab"; }
         { name = "chisui/zsh-nix-shell"; }
-        { name = "jeffreytse/zsh-vi-mode"; }
       ];
     };
 
