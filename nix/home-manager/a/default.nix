@@ -56,8 +56,11 @@
     enableZshIntegration = true;
     settings = {
       directory.truncate_to_repo = false;
-      truncation_length = 0;
-      truncation_symbol = ".../";
+      directory.truncation_length = 0;
+      directory.truncation_symbol = ".../";
+
+      character.success_symbol = "[❯](green)[❯](bold green)";
+      character.error_symbol = " [✗](bold red)";
     };
   };
 
