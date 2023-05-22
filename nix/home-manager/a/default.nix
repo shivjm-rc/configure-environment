@@ -45,12 +45,127 @@
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
-  home.packages = with pkgs; [ ffmpeg curl zsh-fzf-tab hadolint kubernetes-helm openssl plantuml ruby sops watchexec wavpack ];
+  home.packages = with pkgs; [
+    ffmpeg
+    curl
+    zsh-fzf-tab
+    hadolint
+    kubernetes-helm
+    openssl
+    plantuml
+    ruby
+    sops
+    watchexec
+    wavpack
+    yq
+    kubectl
+    kustomize
+    helmfile
+    exiftool
+    kind
+    shellcheck
+    doctl
+    rclone
+    step-cli
+    shfmt
+    graphviz
+    gitleaks
+    tflint
+    cargo-edit
+    cargo-make
+    cargo-outdated
+    cargo-sweep
+    cargo-update
+    cargo-audit
+    cargo-watch
+    fd
+    fselect
+    loc
+    ripgrep
+    amber
+    xh
+    du-dust
+    lsd
+    gping
+    tidy-viewer
+    sd
+    xsv
+    just
+    cargo-feature
+    cargo-nextest
+    taplo
+    procs
+    choose
+    miniserve
+    lfs
+    htmlq
+    wasm-pack
+    cargo-unused-features
+    # cargo-run-bin
+    nodePackages.pnpm
+    yarn
+    nodePackages.js-beautify
+    nodePackages.prettier
+    netlify-cli
+    nodePackages.vscode-json-languageserver
+    nodePackages.yaml-language-server
+    nodePackages.bash-language-server
+    nodePackages.svelte-language-server
+    typescript
+    nodePackages.typescript-language-server
+    nodePackages.mermaid-cli
+    nodePackages.stylelint
+    nodePackages.postcss
+    black
+    pdm
+    pre-commit
+    yamale
+    yamllint
+    python310Packages.python-lsp-server
+    mypy
+    # fonttools
+    s4cmd
+    pgcli
+    gopls
+    gitleaks
+    jsonnet-bundler
+    go-jsonnet
+    kustomize-sops
+    gojsontoyaml
+    godef
+    dsq
+    duf
+    terraform-ls
+    perl
+    git-filter-repo
+    gomplate
+    difftastic
+    # erdtree
+    dogdns
+    sad
+    deno
+    jdk17
+    tree-sitter
+    android-tools
+    sqlite
+    k9s
+    popeye
+    magic-wormhole
+
+    # pulldown-cmark
+  ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
   programs.git.lfs.enable = true;
+  programs.git.delta = {
+    enable = true;
+    options = {
+      navigate = true;
+      side-by-side = true;
+    };
+  };
 
   programs.starship = {
     enable = true;
@@ -111,6 +226,25 @@
   programs.gpg.enable = true;
 
   programs.pandoc.enable = true;
+
+  programs.gh.enable = true;
+
+  programs.mercurial.enable = true;
+  programs.mercurial.userName = "shivjm";
+  programs.mercurial.userEmail = "shivjm@example.com";
+
+  programs.yt-dlp.enable = true;
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    options = [
+      "--cmd"
+      "p"
+    ];
+  };
+
+  services.pueue.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
