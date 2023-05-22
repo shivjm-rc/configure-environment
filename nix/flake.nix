@@ -14,7 +14,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # TODO: Add any other flake you might need
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/0b29fc7500d3222c396556661276b98f060d6838";
+    nixos-wsl.url = "github:htngr/NixOS-WSL/main";
     # hardware.url = "github:nixos/nixos-hardware";
 
     # Shameless plug: looking for a way to nixify your themes and make

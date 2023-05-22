@@ -9,7 +9,7 @@
 
   wsl = {
     enable = true;
-    automountPath = "/mnt";
+    wslConf.automount.root = "/mnt";
     defaultUser = "a";
     startMenuLaunchers = true;
 
@@ -19,8 +19,8 @@
     # Enable integration with Docker Desktop (needs to be installed)
     docker-desktop.enable = true;
 
-    # TODO: Enable this with newer version of NixOS-WSL.
-    # nativeSystemd = true;
+    # This requires htngr/NixOS-WSL to work. See the README.
+    nativeSystemd = true;
   };
 
   networking.hostName = "A-PC";
