@@ -201,6 +201,8 @@
       la = "exa -la";
 
       remount-x11 = "sudo mount -o remount,rw /tmp/.X11-unix";
+
+      pp = "p -";
     };
 
     history = {
