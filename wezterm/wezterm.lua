@@ -130,7 +130,7 @@ local systemConfig = isWindows and (dofile (wt_lua_dir .. '/system/windows.lua')
 
 return {
   audible_bell = "Disabled",
-  default_prog = {systemConfig.default_prog},
+  default_prog = systemConfig.default_prog,
   font = wezterm.font_with_fallback({
         "JetBrains Mono NL"
   }),
