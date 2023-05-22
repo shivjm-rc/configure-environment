@@ -45,11 +45,12 @@
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
+  home.packages = with pkgs; [ ffmpeg curl zsh-fzf-tab hadolint kubernetes-helm openssl plantuml ruby sops watchexec wavpack ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
+  programs.git.lfs.enable = true;
 
   programs.starship = {
     enable = true;
@@ -104,6 +105,12 @@
   };
 
   programs.exa.enable = true;
+
+  programs.bat.enable = true;
+
+  programs.gpg.enable = true;
+
+  programs.pandoc.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
