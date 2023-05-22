@@ -123,8 +123,11 @@ local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 -- The filled in variant of the > symbol
 local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
 
+local isWindows = wezterm.target_triple == "x86_64-pc-windows-msvc";
+local prog = isWindows and "wsl" or (os.getenv("HOME") .. "/.nix-profile/bin/zsh");
+
 return {
-  default_prog = {"wsl"},
+  default_prog = {prog},
   font = wezterm.font_with_fallback({
         "JetBrains Mono NL"
   }),
