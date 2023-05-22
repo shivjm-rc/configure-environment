@@ -129,6 +129,7 @@ local isWindows = wezterm.target_triple == "x86_64-pc-windows-msvc";
 local systemConfig = isWindows and (dofile (wt_lua_dir .. '/system/windows.lua')) or (dofile (wt_lua_dir .. '/system/linux.lua'));
 
 return {
+  audible_bell = "Disabled",
   default_prog = {systemConfig.default_prog},
   font = wezterm.font_with_fallback({
         "JetBrains Mono NL"
@@ -162,4 +163,9 @@ return {
   --     {Text=SOLID_RIGHT_ARROW},
   --   }),
   -- },
+  visual_bell = {
+     fade_in_duration_ms = 75,
+     fade_out_duration_ms = 75,
+     target = 'CursorColor',
+  },
 }
