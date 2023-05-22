@@ -1,7 +1,7 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, modulesPath, ... }: {
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -16,7 +16,26 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
+    "${modulesPath}/profiles/minimal.nix"
+
+    inputs.nixos-wsl.nixosModules.wsl
   ];
+
+  wsl = {
+    enable = true;
+    automountPath = "/mnt";
+    defaultUser = "a";
+    startMenuLaunchers = true;
+
+    # Enable native Docker support
+    docker-native.enable = true;
+
+    # Enable integration with Docker Desktop (needs to be installed)
+    docker-desktop.enable = true;
+
+    # TODO: Enable this with newer version of NixOS-WSL.
+    # nativeSystemd = true;
+  };
 
   nixpkgs = {
     # You can add overlays here
@@ -38,9 +57,10 @@
     ];
     # Configure your nixpkgs instance
     config = {
-      # Disable if you don't want unfree packages
       allowUnfree = true;
     };
+
+    system = "x86_64-linux";
   };
 
   nix = {
@@ -63,32 +83,32 @@
   # FIXME: Add the rest of your current configuration
 
   # TODO: Set your hostname
-  networking.hostName = "your-hostname";
+  # networking.hostName = "your-hostname";
 
   # TODO: This is just an example, be sure to use whatever bootloader you prefer
-  boot.loader.systemd-boot.enable = true;
+  # boot.loader.systemd-boot.enable = true;
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     # FIXME: Replace with your username
-    your-username = {
+    a = {
       # TODO: You can set an initial password for your user.
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
       # Be sure to change it (using passwd) after rebooting!
-      initialPassword = "correcthorsebatterystaple";
+      # initialPassword = "correcthorsebatterystaple";
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "docker" ];
     };
   };
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
   services.openssh = {
-    enable = true;
+    # enable = true;
     # Forbid root login through SSH.
     permitRootLogin = "no";
     # Use keys only. Remove if you want to SSH using password (not recommended)
