@@ -87,6 +87,14 @@
                 ./home-manager/a
               ];
             };
+
+            "a@a-lap" = home-manager.lib.homeManagerConfiguration {
+              inherit pkgs;
+              extraSpecialArgs = { inherit inputs outputs packages; };
+              modules = [
+                ./home-manager/a
+              ];
+            };
           };
     };
 }
