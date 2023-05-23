@@ -10,6 +10,10 @@
   wsl = {
     enable = true;
     wslConf.automount.root = "/mnt";
+    wslConf.interop = {
+      enabled = false;
+      appendWindowsPath = false;
+    };
     defaultUser = "a";
     startMenuLaunchers = true;
 
