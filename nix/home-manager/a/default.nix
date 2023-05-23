@@ -24,6 +24,7 @@
 
       (final: prev: {
         zellij = pkgs.unstable.zellij;
+        sensible = pkgs.unstable.vimPlugins.sensible;
       })
     ];
     # Configure your nixpkgs instance
@@ -41,7 +42,7 @@
   };
 
   home.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = "nvim";
     KEYTIMEOUT = "1";
   };
 
@@ -261,10 +262,39 @@
     ];
   };
 
-  programs.vim = {
+  programs.lazygit = {
     enable = true;
-    # Not supported in older home-manager.
+  };
+
+  programs.neovim = {
+    enable = true;
     # defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+
+    plugins = [ pkgs.unstable.vimPlugins.LazyVim ];
+
+    # TODO: Stop letting lazy.vim download and install everything.
+    extraLuaConfig = ''
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+require("lazy").setup({
+  spec = { "LazyVim/LazyVim", dir = "${pkgs.unstable.vimPlugins.LazyVim}", import = "lazyvim.plugins" },
+  defaults = { lazy = false },
+  install = { colorscheme = { "tokyonight", "habamax" } },
+}, {})
+'';
   };
 
   programs.bottom = {
