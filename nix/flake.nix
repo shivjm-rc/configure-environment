@@ -2,6 +2,8 @@
   description = "Your new nix config";
 
   inputs = {
+    systems.url = "github:nix-systems/x86_64-linux";
+
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
     # You can access packages and modules from different nixpkgs revs
@@ -17,21 +19,19 @@
     nixos-wsl.url = "github:htngr/NixOS-WSL/main";
     # hardware.url = "github:nixos/nixos-hardware";
 
+    flake-utils.url = "github:numtide/flake-utils";
+    flake-utils.inputs.systems.follows = "systems";
+
+    rust-overlay.url = "github:oxalica/rust-overlay";
+
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, rust-overlay, flake-utils, ... }@inputs:
     let
       inherit (self) outputs;
-      forAllSystems = nixpkgs.lib.genAttrs [
-        "aarch64-linux"
-        "i686-linux"
-        "x86_64-linux"
-        "aarch64-darwin"
-        "x86_64-darwin"
-      ];
       mkNixos = modules: nixpkgs.lib.nixosSystem {
         inherit modules;
         specialArgs = { inherit inputs outputs; };
@@ -44,13 +44,15 @@
     rec {
       # Your custom packages
       # Acessible through 'nix build', 'nix shell', etc
-      packages = forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
+      packages = flake-utils.lib.eachDefaultSystem (system:
+        let
+          overlays = [ (import rust-overlay) ];
+          pkgs = import nixpkgs { inherit system overlays; };
         in import ./pkgs { inherit pkgs; }
       );
       # Devshell for bootstrapping
       # Acessible through 'nix develop' or 'nix-shell' (legacy)
-      devShells = forAllSystems (system:
+      devShells = flake-utils.lib.eachDefaultSystem (system:
         let pkgs = nixpkgs.legacyPackages.${system};
         in import ./shell.nix { inherit pkgs; }
       );
@@ -72,14 +74,19 @@
 
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
-      homeConfigurations = {
-        "a@A-PC" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            ./home-manager/a
-          ];
-        };
-      };
+      homeConfigurations = 
+        let
+          overlays = [ (import rust-overlay) ];
+          pkgs = import nixpkgs { inherit overlays; system = "x86_64-linux"; };
+        in
+          {
+            "a@A-PC" = home-manager.lib.homeManagerConfiguration {
+              inherit pkgs;
+              extraSpecialArgs = { inherit inputs outputs packages; };
+              modules = [
+                ./home-manager/a
+              ];
+            };
+          };
     };
 }

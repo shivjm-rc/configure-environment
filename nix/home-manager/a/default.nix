@@ -154,6 +154,8 @@
     magic-wormhole
 
     # pulldown-cmark
+
+    trippy
   ];
 
   # Enable home-manager and git
