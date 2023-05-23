@@ -1,6 +1,6 @@
 # configure-environment
 
-A Nix-based reproducible configuration.
+A Nix-based reproducible configuration. Mostly a bad adaptation of [Misterio77’s starter configs](https://github.com/Misterio77/nix-starter-configs/tree/main) and [~misterio/nix-config](https://git.sr.ht/~misterio/nix-config).
 
 ## Usage
 
