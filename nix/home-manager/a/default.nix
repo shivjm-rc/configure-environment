@@ -271,6 +271,14 @@
   };
 
   services.pueue.enable = true;
+  # The service fails to start with an empty configuration.
+  services.pueue.settings = {
+    shared = {};
+
+    client = {};
+
+    server = {};
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
