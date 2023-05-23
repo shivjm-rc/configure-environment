@@ -22,12 +22,9 @@
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
+      (final: prev: {
+        zellij = pkgs.unstable.zellij;
+      })
     ];
     # Configure your nixpkgs instance
     config = {
@@ -268,6 +265,17 @@
     enable = true;
     # Not supported in older home-manager.
     # defaultEditor = true;
+  };
+
+  programs.bottom = {
+    enable = true;
+  };
+
+  programs.zellij = {
+    enable = true;
+
+    # TODO: Enable this with home-manager from 2023-05-12 or newer.
+    # enableZshIntegration = true;
   };
 
   services.pueue.enable = true;
