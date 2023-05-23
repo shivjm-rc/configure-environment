@@ -183,6 +183,9 @@
 
       cmd_duration.min_time = 500;
       cmd_duration.show_milliseconds = true;
+
+      # In WSL with systemd, this keeps showing `[Systemd]`.
+      container.disabled = true;
     };
   };
 
