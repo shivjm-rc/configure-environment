@@ -4,7 +4,7 @@ A Nix-based reproducible configuration. Mostly a bad adaptation of [Misterio77â€
 
 ## Usage
 
-Git and Nix must be available. In a fresh NixOS installation, <kbd>nix-shell</kbd> will do the job:
+Git and Nix must be available. If Nix is installed, <kbd>nix-shell</kbd> can provide Git:
 
 ```bash
 nix-shell -p git
