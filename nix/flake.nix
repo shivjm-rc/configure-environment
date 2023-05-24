@@ -6,8 +6,6 @@
 
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
-    # You can access packages and modules from different nixpkgs revs
-    # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
@@ -15,7 +13,6 @@
     home-manager.url = "github:nix-community/home-manager/release-22.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # TODO: Add any other flake you might need
     nixos-wsl.url = "github:htngr/NixOS-WSL/main";
     # hardware.url = "github:nixos/nixos-hardware";
 
@@ -42,8 +39,6 @@
       };
     in
     rec {
-      # Your custom packages
-      # Acessible through 'nix build', 'nix shell', etc
       packages = flake-utils.lib.eachDefaultSystem (system:
         let pkgs = nixpkgs.legacyPackages.${system};
         in import ./pkgs { inherit pkgs; }
@@ -55,7 +50,6 @@
         in import ./shell.nix { inherit pkgs; }
       );
 
-      # Your custom packages and modifications, exported as overlays
       overlays = import ./overlays { inherit inputs; };
       # Reusable nixos modules you might want to export
       # These are usually stuff you would upstream into nixpkgs
@@ -67,7 +61,7 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
-        a-pc = mkNixos [ ./hosts/a-pc ];
+        A-PC = mkNixos [ ./hosts/a-pc ];
       };
 
       # Standalone home-manager configuration entrypoint

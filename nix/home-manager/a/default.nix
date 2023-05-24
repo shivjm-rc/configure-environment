@@ -1,5 +1,4 @@
 { inputs, outputs, lib, config, pkgs, ... }: {
-  # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -12,26 +11,19 @@
   ];
 
   nixpkgs = {
-    # You can add overlays here
     overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
 
       inputs.rust-overlay.overlays.default
 
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
       (final: prev: {
         zellij = pkgs.unstable.zellij;
         sensible = pkgs.unstable.vimPlugins.sensible;
       })
     ];
-    # Configure your nixpkgs instance
     config = {
-      # Disable if you don't want unfree packages
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = (_: true);
@@ -160,7 +152,6 @@
     trippy
   ];
 
-  # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
   programs.git.lfs.enable = true;
