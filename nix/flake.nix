@@ -45,9 +45,7 @@
       # Your custom packages
       # Acessible through 'nix build', 'nix shell', etc
       packages = flake-utils.lib.eachDefaultSystem (system:
-        let
-          overlays = [ (import rust-overlay) ];
-          pkgs = import nixpkgs { inherit system overlays; };
+        let pkgs = nixpkgs.legacyPackages.${system};
         in import ./pkgs { inherit pkgs; }
       );
       # Devshell for bootstrapping
