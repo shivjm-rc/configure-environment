@@ -29,5 +29,7 @@
 
   networking.hostName = "A-PC";
 
+  systemd.package = pkgs.systemd-wsl;
+
   time.timeZone = "Asia/Calcutta";
 }
