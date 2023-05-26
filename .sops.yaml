@@ -1,3 +1,5 @@
 creation_rules:
   - path_regex: .*
-    age: age1rn5hrcelaayhw2jp7xyq2g57d70tw3ymm2tfqq29qjwe705dly8syuy4qw
+    age: |-
+      age1rn5hrcelaayhw2jp7xyq2g57d70tw3ymm2tfqq29qjwe705dly8syuy4qw,
+      age1qv5zgazc0ss8kpgjt2ezmq6fr2thgphmfklcs8cfk8nll4fzt96s0nuwzu
