@@ -41,6 +41,7 @@
   };
 
   home.packages = with pkgs; [
+    age
     ffmpeg
     curl
     zsh-fzf-tab
