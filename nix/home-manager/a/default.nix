@@ -151,6 +151,14 @@
     # pulldown-cmark
 
     trippy
+    miller
+
+    captive-browser
+
+    trivy
+    grype
+    syft
+    cosign
   ];
 
   programs.home-manager.enable = true;
