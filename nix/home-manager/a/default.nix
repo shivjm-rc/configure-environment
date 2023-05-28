@@ -159,6 +159,14 @@
     grype
     syft
     cosign
+
+    clang
+    nodejs
+
+    (rust-bin.selectLatestNightlyWith (toolchain:
+      toolchain.default.override {
+        extensions = ["rust-src" "rust-analyzer"];
+      }))
   ];
 
   programs.home-manager.enable = true;
