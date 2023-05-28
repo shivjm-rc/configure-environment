@@ -21,8 +21,6 @@
 
     rust-overlay.url = "github:oxalica/rust-overlay";
 
-    sops-nix.url = "github:Mic92/sops-nix";
-
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
@@ -72,7 +70,6 @@
         let
           overlays = [ (import rust-overlay) ];
           pkgs = import nixpkgs { inherit overlays; system = "x86_64-linux"; };
-          rclone = import ./home-manager/rclone { inherit pkgs; };
         in
           {
             "a@A-PC" = home-manager.lib.homeManagerConfiguration {
@@ -80,7 +77,6 @@
               extraSpecialArgs = { inherit inputs outputs packages; };
               modules = [
                 ./home-manager/a
-                rclone # TODO: remove
               ];
             };
 
@@ -89,7 +85,6 @@
               extraSpecialArgs = { inherit inputs outputs packages; };
               modules = [
                 ./home-manager/a
-                rclone
               ];
             };
           };
