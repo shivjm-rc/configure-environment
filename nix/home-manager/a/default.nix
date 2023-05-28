@@ -231,6 +231,7 @@
         { name = "jeffreytse/zsh-vi-mode"; }
         { name = "Aloxaf/fzf-tab"; }
         { name = "chisui/zsh-nix-shell"; }
+        { name = "jirutka/alpine-zsh-config"; tags = ["from:github" "use:\"**/50-semantic-prompt.zsh\"" "at:v0.5.0"]; }
       ];
     };
 
