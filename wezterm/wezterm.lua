@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm';
+local act = wezterm.action;
 
 -- function recompute_padding(window)
 --   local window_dims = window:get_dimensions();
@@ -128,6 +129,13 @@ local isWindows = wezterm.target_triple == "x86_64-pc-windows-msvc";
 --- Expects `wt_lua_dir` to be set by the calling file.
 local systemConfig = isWindows and (dofile (wt_lua_dir .. '/system/windows.lua')) or (dofile (wt_lua_dir .. '/system/linux.lua'));
 
+local keys = {
+   -- These only seem to work sporadically.
+   { key = 'UpArrow', mods = 'SHIFT|ALT', action = act.ScrollToPrompt(-1) },
+   { key = 'DownArrow', mods = 'SHIFT|ALT', action = act.ScrollToPrompt(1) },
+   { key = 'RightArrow', mods = 'SHIFT|ALT', action = act.SelectTextAtMouseCursor 'SemanticZone' },
+};
+
 return {
   audible_bell = "Disabled",
   default_prog = systemConfig.default_prog,
@@ -138,6 +146,7 @@ return {
   harfbuzz_features = {},
   initial_rows = systemConfig.initial_rows,
   initial_cols = systemConfig.initial_cols,
+  keys = keys,
   launch_menu = systemConfig.launch_menu or {},
   tab_max_width = 20,
   -- color_scheme = "primary",
