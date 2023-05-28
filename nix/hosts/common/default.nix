@@ -1,8 +1,4 @@
-# This is your system's configuration file.
-# Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-
 { inputs, outputs, lib, config, pkgs, modulesPath, nixpkgs-unstable, ... }: {
-  # You can import other NixOS modules here
   imports = [
     inputs.home-manager.nixosModules.home-manager
 
@@ -13,8 +9,6 @@
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
 
-    # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
     ./users
   ];
 
@@ -24,21 +18,15 @@
   };
 
   nixpkgs = {
-    # You can add overlays here
     overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
 
       (final: prev: {
         home-manager = pkgs.unstable.home-manager;
       })
     ];
-    # Configure your nixpkgs instance
     config = {
       allowUnfree = true;
     };
@@ -63,15 +51,9 @@
     };
   };
 
-  # FIXME: Add the rest of your current configuration
-
-  # This setups a SSH server. Very important if you're setting up a headless system.
-  # Feel free to remove if you don't need it.
   services.openssh = {
     # enable = true;
-    # Forbid root login through SSH.
     permitRootLogin = "no";
-    # Use keys only. Remove if you want to SSH using password (not recommended)
     passwordAuthentication = false;
   };
 
