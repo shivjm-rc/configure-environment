@@ -305,6 +305,14 @@ require("lazy").setup({
 
   programs.bottom = {
     enable = true;
+    settings = {
+      flags = {
+        temperature_type = "c";
+        current_usage = true;
+        tree = true;
+        network_use_binary_prefix = true;
+      };
+    };
   };
 
   programs.zellij = {
