@@ -214,6 +214,8 @@
 
       g = "git";
       n = "npm";
+
+      mount-gdrive = "rclone mount gdrive:/ /home/a/gdrive --vfs-cache-mode full";
     };
 
     history = {
