@@ -167,6 +167,8 @@
       toolchain.default.override {
         extensions = ["rust-src" "rust-analyzer"];
       }))
+
+    nixfmt
   ];
 
   programs.home-manager.enable = true;
