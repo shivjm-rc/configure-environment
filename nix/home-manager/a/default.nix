@@ -288,27 +288,22 @@
     vimAlias = true;
     vimdiffAlias = true;
 
-    plugins = [ pkgs.unstable.vimPlugins.LazyVim ];
+    # Use newer Neovim from nixpkgs-unstable. (The stable version is
+    # v0.8.1.)
+    package = pkgs.unstable.neovim-unwrapped;
 
-    # TODO: Stop letting lazy.vim download and install everything.
+    plugins = [
+      pkgs.vimPlugins.surround-nvim
+      pkgs.vimPlugins.gitgutter
+      pkgs.vimPlugins.ctrlp-vim
+      pkgs.vimPlugins.ale
+      pkgs.vimPlugins.vim-airline
+      pkgs.vimPlugins.neovim-sensible
+
+      pkgs.unstable.vimPlugins.nvim-treesitter.withAllGrammars
+    ];
+
     extraLuaConfig = ''
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-require("lazy").setup({
-  spec = { "LazyVim/LazyVim", dir = "${pkgs.unstable.vimPlugins.LazyVim}", import = "lazyvim.plugins" },
-  defaults = { lazy = false },
-  install = { colorscheme = { "tokyonight", "habamax" } },
-}, {})
 '';
   };
 
