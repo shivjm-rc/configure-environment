@@ -4,8 +4,7 @@ let
     rustc = pkgs.rust-bin.nightly.latest.minimal;
     cargo = pkgs.rust-bin.nightly.latest.minimal;
   };
-in
-{
+in {
   trippy = platform.buildRustPackage rec {
     pname = "trippy";
     version = "623ff2c";
@@ -23,7 +22,8 @@ in
     meta = with pkgs.lib; {
       description = "A network diagnostic tool";
       homepage = "https://trippy.cli.rs";
-      changelog = "https://github.com/fujiapple852/trippy/blob/${src.rev}/CHANGELOG.md";
+      changelog =
+        "https://github.com/fujiapple852/trippy/blob/${src.rev}/CHANGELOG.md";
       license = licenses.asl20;
       maintainers = with maintainers; [ figsoda ];
       mainProgram = "trip";

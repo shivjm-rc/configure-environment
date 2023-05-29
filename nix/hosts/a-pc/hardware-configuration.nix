@@ -11,20 +11,19 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/b1db6ba6-6899-4ca1-889f-873db669a27d";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/b1db6ba6-6899-4ca1-889f-873db669a27d";
+    fsType = "ext4";
+  };
 
-  fileSystems."/var/lib/docker" =
-    { device = "/var/lib/docker";
-      fsType = "none";
-      options = [ "bind" ];
-    };
+  fileSystems."/var/lib/docker" = {
+    device = "/var/lib/docker";
+    fsType = "none";
+    options = [ "bind" ];
+  };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/68b64532-5863-4da4-a0c9-7585870b17ff"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/68b64532-5863-4da4-a0c9-7585870b17ff"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -35,5 +34,6 @@
   # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.eth0.useDHCP = lib.mkDefault true;
 
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

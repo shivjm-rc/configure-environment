@@ -14,7 +14,10 @@
 
   home-manager = {
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs outputs; unstable = nixpkgs-unstable; };
+    extraSpecialArgs = {
+      inherit inputs outputs;
+      unstable = nixpkgs-unstable;
+    };
   };
 
   nixpkgs = {
@@ -23,13 +26,9 @@
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
 
-      (final: prev: {
-        home-manager = pkgs.unstable.home-manager;
-      })
+      (final: prev: { home-manager = pkgs.unstable.home-manager; })
     ];
-    config = {
-      allowUnfree = true;
-    };
+    config = { allowUnfree = true; };
 
     system = "x86_64-linux";
   };
@@ -41,7 +40,8 @@
 
     # This will additionally add your inputs to the system's legacy channels
     # Making legacy nix commands consistent as well, awesome!
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}")
+      config.nix.registry;
 
     settings = {
       # Enable flakes and new 'nix' command

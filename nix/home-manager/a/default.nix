@@ -165,7 +165,7 @@
 
     (rust-bin.selectLatestNightlyWith (toolchain:
       toolchain.default.override {
-        extensions = ["rust-src" "rust-analyzer"];
+        extensions = [ "rust-src" "rust-analyzer" ];
       }))
 
     nixfmt
@@ -225,7 +225,8 @@
       g = "git";
       n = "npm";
 
-      mount-gdrive = "rclone mount gdrive:/ /home/a/gdrive --vfs-cache-mode full";
+      mount-gdrive =
+        "rclone mount gdrive:/ /home/a/gdrive --vfs-cache-mode full";
     };
 
     history = {
@@ -241,16 +242,23 @@
         { name = "jeffreytse/zsh-vi-mode"; }
         { name = "Aloxaf/fzf-tab"; }
         { name = "chisui/zsh-nix-shell"; }
-        { name = "wez/wezterm"; tags = ["from:github" "use:\"assets/shell-integration/wezterm.sh\"" "at:1d3427dc7748eaa0f07c8b3ec3202230233ad1a1"]; }
+        {
+          name = "wez/wezterm";
+          tags = [
+            "from:github"
+            ''use:"assets/shell-integration/wezterm.sh"''
+            "at:1d3427dc7748eaa0f07c8b3ec3202230233ad1a1"
+          ];
+        }
       ];
     };
 
     initExtra = ''
-    bindkey -v
+      bindkey -v
 
-    zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-    zstyle ':completion:*:descriptions' format '[%d]'
-    zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
+      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+      zstyle ':completion:*:descriptions' format '[%d]'
+      zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
     '';
   };
 
@@ -273,15 +281,10 @@
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
-    options = [
-      "--cmd"
-      "p"
-    ];
+    options = [ "--cmd" "p" ];
   };
 
-  programs.lazygit = {
-    enable = true;
-  };
+  programs.lazygit = { enable = true; };
 
   programs.neovim = {
     enable = true;
@@ -305,8 +308,7 @@
       pkgs.unstable.vimPlugins.nvim-treesitter.withAllGrammars
     ];
 
-    extraLuaConfig = ''
-'';
+    extraLuaConfig = "";
   };
 
   programs.bottom = {
@@ -331,11 +333,11 @@
   services.pueue.enable = true;
   # The service fails to start with an empty configuration.
   services.pueue.settings = {
-    shared = {};
+    shared = { };
 
-    client = {};
+    client = { };
 
-    server = {};
+    server = { };
   };
 
   # Nicely reload system units when changing configs
