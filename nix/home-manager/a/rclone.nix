@@ -1,5 +1,8 @@
-{ pkgs, targetDir ? "%h/mnt/%i", configFile ? "%h/.config/rclone/rclone.conf"
-, ... }: {
+{ pkgs
+, targetDir ? "%h/mnt/%i"
+, configFile ? "%h/.config/rclone/rclone.conf"
+, ...
+}: {
   systemd.user.services = {
     "rclone@" = {
       Unit = {

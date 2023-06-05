@@ -40,7 +40,8 @@
           inherit modules pkgs;
           extraSpecialArgs = { inherit inputs outputs; };
         };
-    in rec {
+    in
+    rec {
       packages = flake-utils.lib.eachDefaultSystem (system:
         let pkgs = nixpkgs.legacyPackages.${system};
         in import ./pkgs { inherit pkgs; });
@@ -64,30 +65,32 @@
 
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
-      homeConfigurations = let
-        overlays = [ (import rust-overlay) ];
-        pkgs = import nixpkgs {
-          inherit overlays;
-          system = "x86_64-linux";
-        };
-      in {
-        "a@A-PC" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = { inherit inputs outputs packages; };
-          modules = [
-            ./home-manager/a
-            (import ./home-manager/a/rclone.nix { inherit pkgs; })
-          ];
-        };
+      homeConfigurations =
+        let
+          overlays = [ (import rust-overlay) ];
+          pkgs = import nixpkgs {
+            inherit overlays;
+            system = "x86_64-linux";
+          };
+        in
+        {
+          "a@A-PC" = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            extraSpecialArgs = { inherit inputs outputs packages; };
+            modules = [
+              ./home-manager/a
+              (import ./home-manager/a/rclone.nix { inherit pkgs; })
+            ];
+          };
 
-        "a@a-lap" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = { inherit inputs outputs packages; };
-          modules = [
-            ./home-manager/a
-            (import ./home-manager/a/rclone.nix { inherit pkgs; })
-          ];
+          "a@a-lap" = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            extraSpecialArgs = { inherit inputs outputs packages; };
+            modules = [
+              ./home-manager/a
+              (import ./home-manager/a/rclone.nix { inherit pkgs; })
+            ];
+          };
         };
-      };
     };
 }

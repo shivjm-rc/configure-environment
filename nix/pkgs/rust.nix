@@ -4,7 +4,8 @@ let
     rustc = pkgs.rust-bin.nightly.latest.minimal;
     cargo = pkgs.rust-bin.nightly.latest.minimal;
   };
-in {
+in
+{
   trippy = platform.buildRustPackage rec {
     pname = "trippy";
     version = "623ff2c";
