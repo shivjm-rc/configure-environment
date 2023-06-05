@@ -51,6 +51,10 @@
     };
   };
 
+  security.wrappers = { fusermount.source = "${pkgs.fuse}/bin/fusermount"; };
+
+  programs.fuse.userAllowOther = true;
+
   services.openssh = {
     # enable = true;
     permitRootLogin = "no";

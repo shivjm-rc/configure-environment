@@ -74,13 +74,19 @@
         "a@A-PC" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = { inherit inputs outputs packages; };
-          modules = [ ./home-manager/a ];
+          modules = [
+            ./home-manager/a
+            (import ./home-manager/a/rclone.nix { inherit pkgs; })
+          ];
         };
 
         "a@a-lap" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = { inherit inputs outputs packages; };
-          modules = [ ./home-manager/a ];
+          modules = [
+            ./home-manager/a
+            (import ./home-manager/a/rclone.nix { inherit pkgs; })
+          ];
         };
       };
     };
