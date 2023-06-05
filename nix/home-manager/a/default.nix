@@ -168,7 +168,7 @@
         extensions = [ "rust-src" "rust-analyzer" ];
       }))
 
-    nixfmt
+    nixpkgs-fmt
   ];
 
   programs.home-manager.enable = true;
