@@ -1,3 +1,6 @@
+# Run rclone as a service using an existing configuration file, as it
+# isn’t possible to split the rclone configuration into a common
+# section defined by this service and a private section for each host.
 { pkgs
 , targetDir ? "%h/mnt/%i"
 , configFile ? "%h/.config/rclone/rclone.conf"
