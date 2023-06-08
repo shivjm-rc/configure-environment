@@ -169,6 +169,8 @@
       }))
 
     nixpkgs-fmt
+
+    qpdf
   ];
 
   programs.home-manager.enable = true;
