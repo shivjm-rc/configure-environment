@@ -171,6 +171,8 @@
     nixpkgs-fmt
 
     qpdf
+
+    vivid
   ];
 
   programs.home-manager.enable = true;
@@ -254,6 +256,8 @@
 
     initExtra = ''
       bindkey -v
+
+      export LS_COLORS="$(vivid generate dracula)"
 
       zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
       zstyle ':completion:*:descriptions' format '[%d]'
