@@ -484,3 +484,5 @@
   windows: false
 - name: SoundSwitch
   scoop: soundswitch
+- name: hledger
+  scoop: hledger

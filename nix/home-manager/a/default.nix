@@ -173,6 +173,8 @@
     qpdf
 
     vivid
+
+    hledger
   ];
 
   programs.home-manager.enable = true;
