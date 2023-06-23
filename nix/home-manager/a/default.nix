@@ -175,6 +175,7 @@
     vivid
 
     hledger
+    hledger-web
   ];
 
   programs.home-manager.enable = true;
