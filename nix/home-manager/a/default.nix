@@ -175,6 +175,7 @@
     vivid
 
     hledger
+    hledger-ui
     hledger-web
   ];
 
