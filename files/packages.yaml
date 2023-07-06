@@ -486,3 +486,5 @@
   scoop: soundswitch
 - name: hledger
   scoop: hledger
+- name: nushell
+  scoop: nushell

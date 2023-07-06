@@ -270,6 +270,8 @@
     '';
   };
 
+  programs.nushell.enable = true;
+
   programs.exa.enable = true;
 
   programs.bat.enable = true;
