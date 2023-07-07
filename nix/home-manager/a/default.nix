@@ -86,7 +86,7 @@
     tidy-viewer
     sd
     xsv
-    just
+    pkgs.unstable.just
     cargo-feature
     cargo-nextest
     taplo
