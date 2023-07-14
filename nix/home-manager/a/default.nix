@@ -93,7 +93,7 @@
     procs
     choose
     miniserve
-    lfs
+    pkgs.unstable.dysk
     htmlq
     wasm-pack
     cargo-unused-features
