@@ -150,7 +150,7 @@
 
     # pulldown-cmark
 
-    trippy
+    pkgs.unstable.trippy
     miller
 
     captive-browser

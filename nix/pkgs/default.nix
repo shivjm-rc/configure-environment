@@ -3,4 +3,4 @@
 
 { pkgs }:
 let rust = import ./rust.nix { inherit pkgs; };
-in { trippy = rust.trippy; }
+in {}
