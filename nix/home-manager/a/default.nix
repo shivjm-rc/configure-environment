@@ -136,7 +136,7 @@
     git-filter-repo
     gomplate
     difftastic
-    # erdtree
+    pkgs.unstable.erdtree
     dogdns
     sad
     deno
