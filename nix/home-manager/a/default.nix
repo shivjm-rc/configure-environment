@@ -148,7 +148,7 @@
     popeye
     magic-wormhole
 
-    # pulldown-cmark
+    pkgs.unstable.pulldown-cmark
 
     pkgs.unstable.trippy
     miller
