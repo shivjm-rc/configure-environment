@@ -23,5 +23,6 @@ in
   #   neededForUsers = true;
   # };
 
-  home-manager.users.a = import ../../../home-manager/a;
+  # Use *either* the NixOS home-manager module *or* the home-manager CLI.
+  # home-manager.users.a = import ../../../home-manager/a;
 }
