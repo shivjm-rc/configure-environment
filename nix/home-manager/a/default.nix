@@ -177,6 +177,8 @@
     hledger
     hledger-ui
     hledger-web
+
+    zenith # alternative to `top` and `bottom`
   ];
 
   programs.home-manager.enable = true;
