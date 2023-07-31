@@ -182,6 +182,8 @@
 
     pkg-config
     openssl.dev
+
+    poppler
   ];
 
   programs.home-manager.enable = true;

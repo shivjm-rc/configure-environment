@@ -488,3 +488,5 @@
   scoop: hledger
 - name: nushell
   scoop: nushell
+- name: poppler
+  scoop: poppler
