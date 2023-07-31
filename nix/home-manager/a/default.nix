@@ -174,7 +174,7 @@
 
     vivid
 
-    hledger
+    pkgs.unstable.haskellPackages.hledger_1_30_1
     hledger-ui
     hledger-web
 
