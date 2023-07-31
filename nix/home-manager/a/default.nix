@@ -179,6 +179,9 @@
     hledger-web
 
     zenith # alternative to `top` and `bottom`
+
+    pkg-config
+    openssl.dev
   ];
 
   programs.home-manager.enable = true;
