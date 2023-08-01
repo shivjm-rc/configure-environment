@@ -280,6 +280,7 @@
   };
 
   programs.nushell.enable = true;
+  programs.nushell.package = pkgs.unstable.nushell;
 
   programs.exa.enable = true;
 
