@@ -16,8 +16,6 @@
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
 
-      inputs.rust-overlay.overlays.default
-
       (final: prev: {
         zellij = pkgs.unstable.zellij;
         sensible = pkgs.unstable.vimPlugins.sensible;
@@ -162,11 +160,6 @@
 
     clang
     nodejs
-
-    (rust-bin.selectLatestNightlyWith (toolchain:
-      toolchain.default.override {
-        extensions = [ "rust-src" "rust-analyzer" ];
-      }))
 
     nixpkgs-fmt
 
