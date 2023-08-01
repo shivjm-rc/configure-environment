@@ -240,6 +240,7 @@
 
       g = "git";
       n = "npm";
+      k = "kubectl";
     };
 
     history = {
