@@ -269,7 +269,12 @@
       zstyle ':completion:*:descriptions' format '[%d]'
       zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
       setopt extendedglob
+
     '';
+
+    envExtra = ''
+      [[ -f ~/.cargo/env ]] && source ~/.cargo/env
+'';
   };
 
   programs.nushell.enable = true;
