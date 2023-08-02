@@ -232,6 +232,7 @@
 
       pp = "p -";
 
+      d = "docker";
       g = "git";
       n = "npm";
       k = "kubectl";
