@@ -46,6 +46,7 @@
     hadolint
     kubernetes-helm
     openssl
+    openssl.dev
     plantuml
     ruby
     sops
