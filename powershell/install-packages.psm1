@@ -6,26 +6,20 @@ function Install-ThirdPartyPackage {
         $details
     )
 
-    switch ($details.type) {
-        "scoop_bucket" { Install-ScoopBucket $details.scoop $details.repo }
-        "scoop" { Install-ScoopApplication $details.scoop $details.version }
-        "chocolatey" { Install-Chocolatey $details.chocolatey $details.version }
-        "cargo" { Install-Cargo $details.cargo $details.version $details.features $details.git $details.branch }
-        "npm" { Install-Npm $details.npm $details.version }
-        "pipx" { Install-Pipx $details.pipx $details.version }
-        "go" { Install-Go $details.go $details.version }
+        if ($details.ContainsKey("scoop")) { Install-ScoopApplication $details.scoop $details.version }
+        elseif ($details.ContainsKey("chocolatey")) { Install-Chocolatey $details.chocolatey $details.version $details.parameters }
+        elseif ($details.ContainsKey("cargo")) { Install-Cargo $details.cargo $details.version $details.features $details.git $details.branch }
+        elseif ($details.ContainsKey("npm")) { Install-Npm $details.npm $details.version }
+        elseif ($details.ContainsKey("pipx")) { Install-Pipx $details.pipx $details.version }
+        elseif ($details.ContainsKey("go")) { Install-Go $details.go $details.version }
+          elseif ($details.ContainsKey("vcpkg")) { Install-Vcpkg $details.vcpkg }
+    else { throw "Don’t know how to install package: $($details.name)" }
+
+    if ($LASTEXITCODE -ne 0) {
+        throw "Failed to install $($details.name)"
     }
 }
 Export-ModuleMember -Function Install-ThirdPartyPackage
-
-function Install-ScoopBucket($name, $repository) {
-    $params = @(,$name)
-    if ($null -ne $repository) {
-        $params += $repository
-    }
-
-    scoop bucket add @params
-}
 
 Function Install-ScoopApplication($name, $version) {
     if ($null -eq $version) {
@@ -35,14 +29,19 @@ Function Install-ScoopApplication($name, $version) {
     }
 }
 
-Function Install-Chocolatey($name, $version) {
+Function Install-Chocolatey($name, $version, $parameters) {
     $params = @(,$name)
     if ($null -ne $version) {
         $params += "--version"
         $params += $version
     }
 
-    choco upgrade @params
+    $parametersArgs = @()
+    if ($null -ne $parameters) {
+        $parametersArgs = @("--package-parameters", $parameters)
+    }
+
+    choco upgrade -y @params @parametersArgs
 }
 
 Function Install-Cargo($name, $version, $features, $git, $branch) {
@@ -83,4 +82,8 @@ Function Install-Pipx($name, $version) {
 
 Function Install-Go($url, $version) {
     go install $url@$version
+}
+
+Function Install-Vcpkg($package) {
+    vcpkg install $package
 }
