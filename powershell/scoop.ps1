@@ -15,12 +15,22 @@ if ($null -eq (scoop list aria2 6>$null | select-string aria2)) {
     scoop config aria2-warning-enabled false
 }
 
-# $script:ScoopApps = (Get-Content "$Global:PackagesDirectory\\scoop")
-# Write-Output "Installing $($script:ScoopApps.Count) Scoop apps…"
-# scoop install @script:ScoopApps
-# scoop uninstall vcredist2019    # remove leftover installer
-# # TODO install TeraCopy
+$buckets = @(
+    @{ "name" = "extras" },
+    @{ "name" = "nerd-fonts" },
+    @{ "name" = "java" },
+    @{ "name" = "nonportable"},
+    @{ "name" = "smallstep"; "repo" = "https://github.com/smallstep/scoop-bucket.git" }
+)
 
-# if ($LASTEXITCODE -ne 0) {
-#     exit 1
-# }
+foreach ($bucket in $buckets) {
+    if ($bucket.ContainsKey("repo")) {
+        scoop bucket add $bucket.name $bucket.repo
+    } else {
+        scoop bucket add $bucket.name
+    }
+
+    if ($LASTEXITCODE -ne 0 -and $LASTEXITCODE -ne 2) {
+        throw "Failed to add bucket $($bucket.name)"
+    }
+}
