@@ -6,6 +6,7 @@
 $ErrorActionPreference = "Stop"
 
 Import-Module "./env.psm1"
+Import-Module "./install-packages.psm1"
 
 . "./scoop.ps1"
 
@@ -15,10 +16,14 @@ if ($null -eq (Get-Command choco -ErrorAction SilentlyContinue)) {
     Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 }
 
-. ".\rust.ps1" "$Global:PackagesDirectory\\cargo.json"
+if ($null -eq (Get-Module powershell-yaml)) {
+    Install-Module powershell-yaml
+}
 
-Import-Module ".\node.psm1"
-Install-Node "$Global:PackagesDirectory\\fnm" "$Global:PackagesDirectory\\npm"
+$packagesToInstall = (ConvertFrom-Yaml (Get-Content -Raw (Join-Path $ConfigDirectory "../files/packages.yaml")))
 
-Import-Module ".\go.psm1"
-Install-GoPackages "$Global:PackagesDirectory\\go"
+$ErrorActionPreference = "Stop"
+foreach ($package in $packagesToInstall) {
+    Write-Output "Installing $($package.name)…"
+    Install-ThirdPartyPackage $package
+}
