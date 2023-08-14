@@ -457,3 +457,5 @@
   scoop: foobar2000-encoders
 - name: foobar2000
   scoop: foobar2000
+- name: jq
+  scoop: jq
