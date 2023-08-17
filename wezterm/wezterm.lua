@@ -140,7 +140,7 @@ return {
   audible_bell = "Disabled",
   default_prog = systemConfig.default_prog,
   font = wezterm.font_with_fallback({
-        "JetBrains Mono NL"
+        systemConfig.fontName,
   }),
   font_size = systemConfig.font_size,
   harfbuzz_features = {},

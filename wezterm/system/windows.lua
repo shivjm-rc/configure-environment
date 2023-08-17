@@ -8,5 +8,6 @@ return {
          label = "PowerShell",
          args = { "pwsh.exe", "-NoLogo" }
       }
-   }
+   },
+   fontName = "JetBrainsMonoNL Nerd Font",
 };
