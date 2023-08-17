@@ -53,8 +53,6 @@
   scoop: picpick
 - name: plantuml
   scoop: plantuml
-- name: putty
-  scoop: putty
 - name: ruby
   scoop: ruby
 - name: screentogif
@@ -459,3 +457,13 @@
   scoop: foobar2000
 - name: jq
   scoop: jq
+- name: BabelMap
+  scoop: babelmap
+- name: WezTerm
+  scoop: wezterm
+- name: ImageMagick
+  scoop: imagemagick
+- name: Terraform
+  scoop: terraform
+- name: CrystalDiskInfo
+  scoop: crystaldiskinfo
