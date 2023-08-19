@@ -183,7 +183,8 @@
     pkg-config
     openssl.dev
 
-    poppler
+    poppler_utils
+    powershell
   ];
 
   programs.home-manager.enable = true;
