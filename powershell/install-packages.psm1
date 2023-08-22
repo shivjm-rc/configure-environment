@@ -65,6 +65,10 @@ Function Install-Cargo($name, $version, $features, $git, $branch) {
 }
 
 Function Install-Npm($name, $version) {
+    if ($null -ne (Get-Command fnm -ErrorAction SilentlyContinue)) {
+        fnm use system
+    }
+
     if ($null -ne $version) {
         npm install -g $name@$version
     } else {
