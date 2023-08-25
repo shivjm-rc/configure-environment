@@ -470,3 +470,5 @@
   scoop: terraform
 - name: CrystalDiskInfo
   scoop: crystaldiskinfo
+- name: PowerToys
+  scoop: powertoys
