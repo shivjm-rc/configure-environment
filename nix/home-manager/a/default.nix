@@ -66,13 +66,13 @@
     graphviz
     gitleaks
     tflint
-    cargo-edit
-    cargo-make
-    cargo-outdated
-    cargo-sweep
-    cargo-update
-    cargo-audit
-    cargo-watch
+    # cargo-edit
+    # cargo-make
+    # cargo-outdated
+    # cargo-sweep
+    # cargo-update
+    # cargo-audit
+    # cargo-watch
     fd
     fselect
     loc
@@ -86,8 +86,8 @@
     sd
     xsv
     pkgs.unstable.just
-    cargo-feature
-    cargo-nextest
+    # cargo-feature
+    # cargo-nextest
     taplo
     procs
     choose
@@ -95,7 +95,7 @@
     pkgs.unstable.dysk
     htmlq
     wasm-pack
-    cargo-unused-features
+    # cargo-unused-features
     # cargo-run-bin
     nodePackages.pnpm
     yarn
