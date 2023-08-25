@@ -67,9 +67,7 @@
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations =
         let
-          overlays = [ (import rust-overlay) ];
           pkgs = import nixpkgs {
-            inherit overlays;
             system = "x86_64-linux";
           };
         in

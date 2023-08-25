@@ -16,8 +16,6 @@
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
 
-      inputs.rust-overlay.overlays.default
-
       (final: prev: {
         zellij = pkgs.unstable.zellij;
         sensible = pkgs.unstable.vimPlugins.sensible;
@@ -48,6 +46,7 @@
     hadolint
     kubernetes-helm
     openssl
+    openssl.dev
     plantuml
     ruby
     sops
@@ -67,13 +66,13 @@
     graphviz
     gitleaks
     tflint
-    cargo-edit
-    cargo-make
-    cargo-outdated
-    cargo-sweep
-    cargo-update
-    cargo-audit
-    cargo-watch
+    # cargo-edit
+    # cargo-make
+    # cargo-outdated
+    # cargo-sweep
+    # cargo-update
+    # cargo-audit
+    # cargo-watch
     fd
     fselect
     loc
@@ -87,8 +86,8 @@
     sd
     xsv
     pkgs.unstable.just
-    cargo-feature
-    cargo-nextest
+    # cargo-feature
+    # cargo-nextest
     taplo
     procs
     choose
@@ -96,7 +95,7 @@
     pkgs.unstable.dysk
     htmlq
     wasm-pack
-    cargo-unused-features
+    # cargo-unused-features
     # cargo-run-bin
     nodePackages.pnpm
     yarn
@@ -163,18 +162,13 @@
     clang
     nodejs
 
-    (rust-bin.selectLatestNightlyWith (toolchain:
-      toolchain.default.override {
-        extensions = [ "rust-src" "rust-analyzer" ];
-      }))
-
     nixpkgs-fmt
 
     qpdf
 
     vivid
 
-    hledger
+    pkgs.unstable.haskellPackages.hledger
     hledger-ui
     hledger-web
 
@@ -238,8 +232,10 @@
 
       pp = "p -";
 
+      d = "docker";
       g = "git";
       n = "npm";
+      k = "kubectl";
     };
 
     history = {
@@ -275,10 +271,16 @@
       zstyle ':completion:*:descriptions' format '[%d]'
       zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
       setopt extendedglob
+
     '';
+
+    envExtra = ''
+      [[ -f ~/.cargo/env ]] && source ~/.cargo/env
+'';
   };
 
   programs.nushell.enable = true;
+  programs.nushell.package = pkgs.unstable.nushell;
 
   programs.exa.enable = true;
 
