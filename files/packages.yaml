@@ -13,8 +13,8 @@
   scoop: git
 - name: starship
   scoop: starship
-- name: 7zip
-  scoop: 7zip
+- name: PeaZip
+  scoop: peazip
 - name: advancedrenamer
   scoop: advancedrenamer
 - name: curl
@@ -310,7 +310,7 @@
   version: 4.9.1
 - name: svelte-language-server
   npm: svelte-language-server
-  version: 0.15.10
+  version: 0.15.18
 - name: swagger-cli
   npm: swagger-cli
   version: 4.0.4
@@ -472,3 +472,5 @@
   scoop: crystaldiskinfo
 - name: PowerToys
   scoop: powertoys
+- name: dive
+  scoop: dive
