@@ -179,6 +179,8 @@
 
     poppler_utils
     powershell
+    
+    pkgs.unstable.eza
   ];
 
   programs.home-manager.enable = true;
@@ -223,10 +225,10 @@
     enableAutosuggestions = true;
     enableCompletion = true;
     shellAliases = {
-      sl = "exa";
-      ls = "exa";
-      l = "exa -l";
-      la = "exa -la";
+      sl = "eza";
+      ls = "eza";
+      l = "eza -l";
+      la = "eza -la";
 
       remount-x11 = "sudo mount -o remount,rw /tmp/.X11-unix";
 
@@ -267,7 +269,7 @@
 
       export LS_COLORS="$(vivid generate dracula)"
 
-      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
       zstyle ':completion:*:descriptions' format '[%d]'
       zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
       setopt extendedglob
@@ -281,8 +283,6 @@
 
   programs.nushell.enable = true;
   programs.nushell.package = pkgs.unstable.nushell;
-
-  programs.exa.enable = true;
 
   programs.bat.enable = true;
 

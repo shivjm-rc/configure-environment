@@ -235,9 +235,8 @@
 - name: xsv
   cargo: xsv
   version: 0.13.0
-- name: exa
-  cargo: exa
-  git: https://github.com/ogham/exa.git
+- name: eza
+  scoop: eza
 - name: just
   cargo: just
   version: 1.13.0
