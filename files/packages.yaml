@@ -473,3 +473,5 @@
   scoop: powertoys
 - name: dive
   scoop: dive
+- name: lazydocker
+  scoop: lazydocker
