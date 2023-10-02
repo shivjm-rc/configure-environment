@@ -97,7 +97,7 @@
     wasm-pack
     # cargo-unused-features
     # cargo-run-bin
-    nodePackages.pnpm
+    unstable.nodePackages_latest.pnpm
     yarn
     nodePackages.js-beautify
     nodePackages.prettier
