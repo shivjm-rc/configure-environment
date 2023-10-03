@@ -179,7 +179,7 @@
 
     poppler_utils
     powershell
-    
+
     pkgs.unstable.eza
   ];
 
@@ -274,12 +274,15 @@
       zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
       setopt extendedglob
 
+      source ~/.config/zsh/update-window-title.zsh
     '';
 
     envExtra = ''
       [[ -f ~/.cargo/env ]] && source ~/.cargo/env
 '';
   };
+
+  home.file.".config/zsh/update-window-title.zsh".text = (builtins.readFile ./zsh-window-title.sh);
 
   programs.nushell.enable = true;
   programs.nushell.package = pkgs.unstable.nushell;
