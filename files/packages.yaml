@@ -475,3 +475,5 @@
   scoop: dive
 - name: lazydocker
   scoop: lazydocker
+- name: wget (separate from outdated GoW version)
+  scoop: wget
