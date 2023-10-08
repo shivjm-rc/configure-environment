@@ -105,6 +105,8 @@
   scoop: doctl
 - name: rclone
   scoop: rclone
+- name: WinFSP (for rclone mount)
+  scoop: winfsp
 - name: smallstep/step
   scoop: smallstep/step
 - name: shfmt
@@ -477,3 +479,5 @@
   scoop: lazydocker
 - name: wget (separate from outdated GoW version)
   scoop: wget
+- name: Zstandard
+  scoop: zstd
