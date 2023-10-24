@@ -117,8 +117,6 @@
   scoop: phantomjs
 - name: gitleaks
   scoop: gitleaks
-- name: lens
-  scoop: lens
 - name: DejaVuSans Mono nerd font
   scoop: DejaVuSansMono-NF
   apt: fonts-dejavu-core
