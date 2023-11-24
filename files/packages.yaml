@@ -479,3 +479,6 @@
   scoop: wget
 - name: Zstandard
   scoop: zstd
+- name: cargo-sweep
+  cargo: cargo-sweep
+  version: 0.7.0
