@@ -1,0 +1,34 @@
+---
+services:
+  db:
+    image: mongo:4.4.25
+    volumes:
+      - ./mongo-data:/data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    env_file:
+      - .mongo.env
+  app:
+    image: lscr.io/linuxserver/unifi-network-application:7.5.187
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Calcutta
+      - MEM_LIMIT=1024 #optional
+      - MEM_STARTUP=1024 #optional
+      - MONGO_HOST=db
+    volumes:
+      - ./application-config:/config
+    env_file:
+      # The values in this file must match init-mongo.js and must
+      # include `MONGO_PORT` as well.
+      - .mongo.env
+    ports:
+      - 8443:8443
+      - 3478:3478/udp
+      - 10001:10001/udp
+      - 8080:8080
+      - 1900:1900/udp #optional
+      - 8843:8843 #optional
+      - 8880:8880 #optional
+      - 6789:6789 #optional
+      - 5514:5514/udp #optional

@@ -181,6 +181,8 @@
     powershell
 
     pkgs.unstable.eza
+
+    docker-compose
   ];
 
   programs.home-manager.enable = true;
