@@ -482,3 +482,6 @@
 - name: cargo-sweep
   cargo: cargo-sweep
   version: 0.7.0
+- name: m2t
+  go: github.com/Donearm/m2t
+  version: 364a662
