@@ -183,6 +183,9 @@
     pkgs.unstable.eza
 
     docker-compose
+
+    ipmitool
+    nmap
   ];
 
   programs.home-manager.enable = true;
