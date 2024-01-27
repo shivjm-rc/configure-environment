@@ -485,3 +485,6 @@
 - name: m2t
   go: github.com/Donearm/m2t
   version: 364a662
+- name: wormhole-william
+  go: github.com/psanford/wormhole-william
+  version: v1.0.7
