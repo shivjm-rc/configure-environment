@@ -186,6 +186,8 @@
 
     ipmitool
     nmap
+
+    talosctl
   ];
 
   programs.home-manager.enable = true;
