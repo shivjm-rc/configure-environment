@@ -488,3 +488,6 @@
 - name: wormhole-william
   go: github.com/psanford/wormhole-william
   version: v1.0.7
+- name: psql
+  choco: psql
+  version: 16.1.0
