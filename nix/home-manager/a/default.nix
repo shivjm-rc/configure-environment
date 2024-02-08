@@ -236,6 +236,7 @@
       ls = "eza";
       l = "eza -l";
       la = "eza -la";
+      pdf-decrypt = "qpdf --decrypt --password=$1 $2 $3";
 
       remount-x11 = "sudo mount -o remount,rw /tmp/.X11-unix";
 
