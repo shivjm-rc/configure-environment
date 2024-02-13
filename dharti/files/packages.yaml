@@ -491,3 +491,5 @@
 - name: psql
   choco: psql
   version: 16.1.0
+- name: kubeconform
+  scoop: kubeconform
