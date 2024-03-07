@@ -493,3 +493,7 @@
   version: 16.1.0
 - name: kubeconform
   scoop: kubeconform
+- name: Typst
+  scoop: typst
+- name: R programming language
+  choco: r.project
