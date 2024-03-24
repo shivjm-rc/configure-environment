@@ -497,3 +497,7 @@
   scoop: typst
 - name: R programming language
   choco: r.project
+- name: Miller
+  scoop: miller
+- name: DuckDB
+  scoop: duckdb
