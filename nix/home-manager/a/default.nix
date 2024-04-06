@@ -131,6 +131,7 @@
     dsq
     duf
     terraform-ls
+    terraform
     perl
     git-filter-repo
     gomplate
@@ -246,6 +247,7 @@
       g = "git";
       n = "npm";
       k = "kubectl";
+      tf = "terraform";
     };
 
     history = {
