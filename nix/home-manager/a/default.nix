@@ -144,7 +144,7 @@
     tree-sitter
     android-tools
     sqlite
-    k9s
+    pkgs.unstable.k9s
     popeye
     magic-wormhole
 
