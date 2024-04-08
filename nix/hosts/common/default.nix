@@ -14,6 +14,13 @@
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
+  boot.initrd = {
+    supportedFilesystems = [ "nfs" ];
+    kernelModules = [ "nfs" ];
+  };
+
+  environment.systemPackages = with pkgs; [ nfs-utils ];
+
   home-manager = {
     useUserPackages = true;
     extraSpecialArgs = {
