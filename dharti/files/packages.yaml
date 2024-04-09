@@ -456,3 +456,7 @@
   scoop: miller
 - name: DuckDB
   scoop: duckdb
+- name: Intermodal
+  scoop: intermodal
+- name: mediainfo
+  scoop: mediainfo
