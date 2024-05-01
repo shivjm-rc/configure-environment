@@ -460,3 +460,6 @@
   scoop: intermodal
 - name: mediainfo
   scoop: mediainfo
+- name: rustypaste CLI
+  cargo: rustypaste-cli
+  version: 0.9.0
