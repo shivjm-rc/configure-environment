@@ -139,7 +139,7 @@
     pkgs.unstable.erdtree
     dogdns
     sad
-    deno
+    pkgs.unstable.deno
     jdk17
     tree-sitter
     android-tools
