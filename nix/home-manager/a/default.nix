@@ -230,7 +230,9 @@
     enable = true;
     autocd = false;
     dotDir = ".config/zsh";
-    enableAutosuggestions = true;
+    autosuggestion = {
+      enable = true;
+    };
     enableCompletion = true;
     shellAliases = {
       sl = "eza";
