@@ -170,8 +170,6 @@
     vivid
 
     pkgs.unstable.haskellPackages.hledger
-    hledger-ui
-    hledger-web
 
     zenith # alternative to `top` and `bottom`
 
