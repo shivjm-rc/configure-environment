@@ -169,9 +169,7 @@
 
     vivid
 
-    pkgs.unstable.haskellPackages.hledger
-    hledger-ui
-    hledger-web
+    pkgs.unstable.haskellPackages.hledger_1_34
 
     zenith # alternative to `top` and `bottom`
 
@@ -230,7 +228,9 @@
     enable = true;
     autocd = false;
     dotDir = ".config/zsh";
-    enableAutosuggestions = true;
+    autosuggestion = {
+      enable = true;
+    };
     enableCompletion = true;
     shellAliases = {
       sl = "eza";
