@@ -463,3 +463,5 @@
 - name: rustypaste CLI
   cargo: rustypaste-cli
   version: 0.9.0
+- name: Mozilla Thunderbird
+  scoop: thunderbird
