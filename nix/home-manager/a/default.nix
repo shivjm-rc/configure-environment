@@ -16,6 +16,8 @@
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
 
+      inputs.rust-overlay.overlays.default
+
       (final: prev: {
         zellij = pkgs.unstable.zellij;
         sensible = pkgs.unstable.vimPlugins.sensible;
@@ -38,156 +40,164 @@
     KEYTIMEOUT = "1";
   };
 
-  home.packages = with pkgs; [
-    age
-    ffmpeg
-    curl
-    zsh-fzf-tab
-    hadolint
-    kubernetes-helm
-    openssl
-    openssl.dev
-    plantuml
-    ruby
-    sops
-    watchexec
-    wavpack
-    yq
-    kubectl
-    kustomize
-    helmfile
-    exiftool
-    kind
-    shellcheck
-    doctl
-    rclone
-    step-cli
-    shfmt
-    graphviz
-    gitleaks
-    tflint
-    # cargo-edit
-    # cargo-make
-    # cargo-outdated
-    # cargo-sweep
-    # cargo-update
-    # cargo-audit
-    # cargo-watch
-    fd
-    fselect
-    loc
-    ripgrep
-    amber
-    xh
-    du-dust
-    lsd
-    gping
-    tidy-viewer
-    sd
-    xsv
-    pkgs.unstable.just
-    # cargo-feature
-    # cargo-nextest
-    taplo
-    procs
-    choose
-    miniserve
-    pkgs.unstable.dysk
-    htmlq
-    wasm-pack
-    # cargo-unused-features
-    # cargo-run-bin
-    unstable.nodePackages_latest.pnpm
-    yarn
-    nodePackages.js-beautify
-    nodePackages.prettier
-    netlify-cli
-    nodePackages.vscode-json-languageserver
-    nodePackages.yaml-language-server
-    nodePackages.bash-language-server
-    nodePackages.svelte-language-server
-    typescript
-    nodePackages.typescript-language-server
-    nodePackages.mermaid-cli
-    nodePackages.stylelint
-    nodePackages.postcss
-    black
-    pdm
-    pre-commit
-    yamale
-    yamllint
-    python310Packages.python-lsp-server
-    mypy
-    # fonttools
-    s4cmd
-    pgcli
-    gopls
-    gitleaks
-    jsonnet-bundler
-    go-jsonnet
-    kustomize-sops
-    gojsontoyaml
-    godef
-    dsq
-    duf
-    terraform-ls
-    terraform
-    perl
-    git-filter-repo
-    gomplate
-    difftastic
-    pkgs.unstable.erdtree
-    dogdns
-    sad
-    pkgs.unstable.deno
-    jdk17
-    tree-sitter
-    android-tools
-    sqlite
-    pkgs.unstable.k9s
-    popeye
-    magic-wormhole
+  home.packages =
+    let
+      latestRustNightly = pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.default.override {
+        extensions = [ "rust-src" "rust-analyzer" ];
+      });
+    in
+    with pkgs; [
+      age
+      ffmpeg
+      curl
+      zsh-fzf-tab
+      hadolint
+      kubernetes-helm
+      openssl
+      openssl.dev
+      plantuml
+      ruby
+      sops
+      watchexec
+      wavpack
+      yq
+      kubectl
+      kustomize
+      helmfile
+      exiftool
+      kind
+      shellcheck
+      doctl
+      rclone
+      step-cli
+      shfmt
+      graphviz
+      gitleaks
+      tflint
+      # cargo-edit
+      # cargo-make
+      # cargo-outdated
+      # cargo-sweep
+      # cargo-update
+      # cargo-audit
+      # cargo-watch
+      fd
+      fselect
+      loc
+      ripgrep
+      amber
+      xh
+      du-dust
+      lsd
+      gping
+      tidy-viewer
+      sd
+      xsv
+      pkgs.unstable.just
+      # cargo-feature
+      # cargo-nextest
+      taplo
+      procs
+      choose
+      miniserve
+      pkgs.unstable.dysk
+      htmlq
+      wasm-pack
+      # cargo-unused-features
+      # cargo-run-bin
+      unstable.nodePackages_latest.pnpm
+      yarn
+      nodePackages.js-beautify
+      nodePackages.prettier
+      netlify-cli
+      nodePackages.vscode-json-languageserver
+      nodePackages.yaml-language-server
+      nodePackages.bash-language-server
+      nodePackages.svelte-language-server
+      typescript
+      nodePackages.typescript-language-server
+      nodePackages.mermaid-cli
+      nodePackages.stylelint
+      nodePackages.postcss
+      black
+      pdm
+      pre-commit
+      yamale
+      yamllint
+      python310Packages.python-lsp-server
+      mypy
+      # fonttools
+      s4cmd
+      pgcli
+      gopls
+      gitleaks
+      jsonnet-bundler
+      go-jsonnet
+      kustomize-sops
+      gojsontoyaml
+      godef
+      dsq
+      duf
+      terraform-ls
+      terraform
+      perl
+      git-filter-repo
+      gomplate
+      difftastic
+      pkgs.unstable.erdtree
+      dogdns
+      sad
+      pkgs.unstable.deno
+      jdk17
+      tree-sitter
+      android-tools
+      sqlite
+      pkgs.unstable.k9s
+      popeye
+      magic-wormhole
 
-    pkgs.unstable.pulldown-cmark
+      pkgs.unstable.pulldown-cmark
 
-    pkgs.unstable.trippy
-    miller
+      pkgs.unstable.trippy
+      miller
 
-    captive-browser
+      captive-browser
 
-    trivy
-    grype
-    syft
-    cosign
+      trivy
+      grype
+      syft
+      cosign
 
-    clang
-    nodejs
+      clang
+      nodejs
 
-    nixpkgs-fmt
+      nixpkgs-fmt
 
-    qpdf
+      qpdf
 
-    vivid
+      vivid
 
-    pkgs.unstable.haskellPackages.hledger_1_34
+      pkgs.unstable.haskellPackages.hledger_1_34
 
-    zenith # alternative to `top` and `bottom`
+      zenith # alternative to `top` and `bottom`
 
-    pkg-config
-    openssl.dev
+      pkg-config
+      openssl.dev
 
-    poppler_utils
-    powershell
+      poppler_utils
+      powershell
 
-    pkgs.unstable.eza
+      pkgs.unstable.eza
 
-    docker-compose
+      docker-compose
 
-    ipmitool
-    nmap
+      ipmitool
+      nmap
 
-    talosctl
-  ];
+      talosctl
+
+      latestRustNightly
+    ];
 
   programs.home-manager.enable = true;
   programs.git.enable = true;
@@ -289,7 +299,7 @@
 
     envExtra = ''
       [[ -f ~/.cargo/env ]] && source ~/.cargo/env
-'';
+    '';
   };
 
   home.file.".config/zsh/update-window-title.zsh".text = (builtins.readFile ./zsh-window-title.sh);
@@ -362,6 +372,8 @@
     # TODO: Enable this with home-manager from 2023-05-12 or newer.
     # enableZshIntegration = true;
   };
+
+  programs.texlive.enable = true;
 
   services.pueue.enable = true;
   # The service fails to start with an empty configuration.
