@@ -5,5 +5,4 @@ let
     cargo = pkgs.rust-bin.nightly.latest.minimal;
   };
 in
-{
-}
+{ }
