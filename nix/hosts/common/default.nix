@@ -65,10 +65,9 @@
   programs.fuse.userAllowOther = true;
   programs.zsh.enable = true;
 
-  services.openssh = {
-    # enable = true;
-    permitRootLogin = "no";
-    passwordAuthentication = false;
+  services.openssh.settings = {
+    PermitRootLogin = "no";
+    PasswordAuthentication = false;
   };
 
   # Enable common container config files in /etc/containers
