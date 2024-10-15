@@ -190,6 +190,7 @@
       pkgs.unstable.eza
 
       docker-compose
+      buildah
 
       ipmitool
       nmap

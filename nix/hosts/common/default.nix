@@ -19,7 +19,7 @@
     kernelModules = [ "nfs" ];
   };
 
-  environment.systemPackages = with pkgs; [ nfs-utils ];
+  environment.systemPackages = with pkgs; [ nfs-utils passt ];
 
   home-manager = {
     useUserPackages = true;
