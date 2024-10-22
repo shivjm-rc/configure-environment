@@ -304,6 +304,9 @@
   };
 
   home.file.".config/zsh/update-window-title.zsh".text = (builtins.readFile ./zsh-window-title.sh);
+  home.file.".config/powershell/Microsoft.PowerShell_profile.ps1".text = ''
+    '. "~/src/my/powershell/profile.ps1"' | Invoke-Expression
+  '';
 
   programs.nushell.enable = true;
   programs.nushell.package = pkgs.unstable.nushell;
