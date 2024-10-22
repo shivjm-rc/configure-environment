@@ -327,6 +327,7 @@
   programs.mercurial.userEmail = "shivjm@example.com";
 
   programs.yt-dlp.enable = true;
+  programs.yt-dlp.package = pkgs.unstable.yt-dlp;
 
   programs.zoxide = {
     enable = true;
