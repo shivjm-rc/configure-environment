@@ -199,6 +199,8 @@
       talosctl
 
       latestRustNightly
+
+      imagemagick_light
     ];
 
   programs.home-manager.enable = true;
