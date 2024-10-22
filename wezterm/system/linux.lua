@@ -4,4 +4,10 @@ return {
    initial_rows = 35,
    initial_cols = 100,
    fontName = "JetBrains Mono NL",
+   launch_menu = {
+      {
+         label = "PowerShell",
+         args = { "/home/a/.nix-profile/bin/pwsh" }
+      }
+   }
 };
