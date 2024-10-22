@@ -88,6 +88,7 @@
       amber
       xh
       du-dust
+      dysk
       lsd
       gping
       tidy-viewer
