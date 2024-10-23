@@ -7,7 +7,7 @@ return {
    launch_menu = {
       {
          label = "PowerShell",
-         args = { "/home/a/.nix-profile/bin/pwsh" }
+         args = { "/home/a/.nix-profile/bin/zsh", "-i", "-c", "pwsh" }
       }
    }
 };
