@@ -88,7 +88,7 @@
       amber
       xh
       du-dust
-      dysk
+      # dysk # this causes collisions in completions
       lsd
       gping
       tidy-viewer
