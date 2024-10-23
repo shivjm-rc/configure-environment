@@ -198,7 +198,8 @@
 
       talosctl
 
-      latestRustNightly
+      # latestRustNightly
+      rustup
 
       imagemagick_light
     ];
