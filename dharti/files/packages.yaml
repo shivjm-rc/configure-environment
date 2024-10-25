@@ -465,3 +465,8 @@
   version: 0.9.0
 - name: Mozilla Thunderbird
   scoop: thunderbird
+- name: uv (Python package manager)
+  scoop: uv
+- name: posting (Python HTTP tool)
+  uv: posting
+  version: 2

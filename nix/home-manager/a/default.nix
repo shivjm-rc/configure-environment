@@ -202,6 +202,9 @@
       rustup
 
       imagemagick_light
+
+      # This is not yet available.
+      # posting
     ];
 
   programs.home-manager.enable = true;
