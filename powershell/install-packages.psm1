@@ -1,18 +1,17 @@
-$types = @("scoop", "chocolatey", "cargo", "npm", "pipx", "go")
-
 function Install-ThirdPartyPackage {
     param(
-        [Parameter(Mandatory=$True)]
+        [Parameter(Mandatory = $True)]
         $details
     )
 
-        if ($details.ContainsKey("scoop")) { Install-ScoopApplication $details.scoop $details.version }
-        elseif ($details.ContainsKey("chocolatey")) { Install-Chocolatey $details.chocolatey $details.version $details.parameters }
-        elseif ($details.ContainsKey("cargo")) { Install-Cargo $details.cargo $details.version $details.features $details.git $details.branch }
-        elseif ($details.ContainsKey("npm")) { Install-Npm $details.npm $details.version }
-        elseif ($details.ContainsKey("pipx")) { Install-Pipx $details.pipx $details.version }
-        elseif ($details.ContainsKey("go")) { Install-Go $details.go $details.version }
-          elseif ($details.ContainsKey("vcpkg")) { Install-Vcpkg $details.vcpkg }
+    if ($details.ContainsKey("scoop")) { Install-ScoopApplication $details.scoop $details.version }
+    elseif ($details.ContainsKey("chocolatey")) { Install-Chocolatey $details.chocolatey $details.version $details.parameters }
+    elseif ($details.ContainsKey("cargo")) { Install-Cargo $details.cargo $details.version $details.features $details.git $details.branch }
+    elseif ($details.ContainsKey("npm")) { Install-Npm $details.npm $details.version }
+    elseif ($details.ContainsKey("pipx")) { Install-Pipx $details.pipx $details.version }
+    elseif ($details.ContainsKey("go")) { Install-Go $details.go $details.version }
+    elseif ($details.ContainsKey("vcpkg")) { Install-Vcpkg $details.vcpkg }
+    elseif ($details.ContainsKey("uv")) { Install-Uv $details.uv $details.version }
     else { throw "Don’t know how to install package: $($details.name)" }
 
     if ($LASTEXITCODE -ne 0) {
@@ -24,13 +23,14 @@ Export-ModuleMember -Function Install-ThirdPartyPackage
 Function Install-ScoopApplication($name, $version) {
     if ($null -eq $version) {
         scoop install $name
-    } else {
+    }
+    else {
         scoop install $name@$version
     }
 }
 
 Function Install-Chocolatey($name, $version, $parameters) {
-    $params = @(,$name)
+    $params = @(, $name)
     if ($null -ne $version) {
         $params += "--version"
         $params += $version
@@ -47,7 +47,8 @@ Function Install-Chocolatey($name, $version, $parameters) {
 Function Install-Cargo($name, $version, $features, $git, $branch) {
     $params = if ($null -ne $git) {
         @("--git", $git)
-    } else {
+    }
+    else {
         @("--version", $version)
     }
 
@@ -71,7 +72,8 @@ Function Install-Npm($name, $version) {
 
     if ($null -ne $version) {
         npm install -g $name@$version
-    } else {
+    }
+    else {
         npm install -g $name
     }
 }
@@ -79,7 +81,8 @@ Function Install-Npm($name, $version) {
 Function Install-Pipx($name, $version) {
     if ($null -ne $version) {
         pipx install $name==$version
-    } else {
+    }
+    else {
         pipx install $name
     }
 }
@@ -90,4 +93,8 @@ Function Install-Go($url, $version) {
 
 Function Install-Vcpkg($package) {
     vcpkg install $package
+}
+
+Function Install-Uv($name, $version) {
+    uv tool install "$name==$version"
 }
