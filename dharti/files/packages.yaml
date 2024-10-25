@@ -132,6 +132,8 @@
   chocolatey: diffutils
 - name: Python
   chocolatey: python
+- name: uv (Python package manager)
+  scoop: uv
 - name: zig
   chocolatey: zig
 - name: golang
@@ -300,29 +302,29 @@
   npm: "@csstools/postcss-sass"
   version: 5.0.1
 - name: black
-  pipx: black
+  uv: black
 - name: pdm
-  pipx: pdm
+  uv: pdm
 - name: pre-commit
-  pipx: pre-commit
+  uv: pre-commit
 - name: yamale
-  pipx: yamale
+  uv: yamale
 - name: yamllint
-  pipx: yamllint
+  uv: yamllint
 - name: python-lsp-server
-  pipx: python-lsp-server[all]
+  uv: python-lsp-server[all]
   inject:
     - pylsp-mypy
     - pyls-isort
     - pylsp-rope
 - name: fonttools
-  pipx: fonttools
+  uv: fonttools
 - name: mypy
-  pipx: mypy
+  uv: mypy
 - name: s4cmd
-  pipx: s4cmd
+  uv: s4cmd
 - name: pgcli
-  pipx: pgcli
+  uv: pgcli
 - name: gopls
   go: golang.org/x/tools/gopls
   version: v0.11.0
@@ -465,8 +467,6 @@
   version: 0.9.0
 - name: Mozilla Thunderbird
   scoop: thunderbird
-- name: uv (Python package manager)
-  scoop: uv
 - name: posting (Python HTTP tool)
   uv: posting
   version: 2
