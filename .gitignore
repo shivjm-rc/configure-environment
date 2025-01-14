@@ -1,3 +1,5 @@
 /hosts
 /keys
 ssh-config
+/directories.json
+/ssh-hosts.json
