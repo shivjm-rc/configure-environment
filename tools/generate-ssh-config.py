@@ -7,7 +7,7 @@ from pathlib import Path
 from string import Template
 
 parser = argparse.ArgumentParser(
-    description="Generate an SSH config file for the hosts specified in a JSON file. The file should contain an object whose keys are the names of the hosts to define and whose values are objects containing `address`, `user`, `keyFile`, and optionally `port`."
+    description="Generate SSH config files for the hosts specified in a JSON file. The hosts file should contain an object whose keys are the names of the hosts to define and whose values are objects containing `address`, `user`, `keyFile`, and optionally `port`. One config file will be generated for each system defined in `directories`."
 )
 parser.add_argument(
     "hosts_file", type=Path, help="JSON file containing host definitions"
@@ -18,7 +18,11 @@ parser.add_argument(
     help="Per-system mapping of directories to interpolate in identity file paths",
 )
 parser.add_argument(
-    "target", type=str, help="System to retrieve directory mappings for"
+    "--output_directory",
+    type=Path,
+    nargs="?",
+    default="generated/ssh",
+    help="Directory under which to place generated files",
 )
 parser.add_argument(
     "--log",
@@ -53,20 +57,26 @@ hosts = json.loads(args.hosts_file.read_text())
 directories = json.loads(args.directories_file.read_text())
 logger.debug("Hosts: %s", hosts)
 logger.debug("Directories: %s", directories)
-current_directories = directories[args.target]
-logger.debug("This system: %s", current_directories)
 
-formatted_hosts = [
-    build_host_definition(
-        current_directories,
-        name,
-        h["address"],
-        h["user"],
-        h["keyFile"],
-        h.get("port"),
-    )
-    for name, h in hosts.items()
-]
-logger.debug("Formatted hosts: %s", formatted_hosts)
+for host in directories.keys():
+    current_directories = directories[host]
+    logger.debug("Directories for %s: %s", host, current_directories)
 
-print("\n\n".join(formatted_hosts))
+    formatted_hosts = [
+        build_host_definition(
+            current_directories,
+            name,
+            h["address"],
+            h["user"],
+            h["keyFile"],
+            h.get("port"),
+        )
+        for name, h in hosts.items()
+    ]
+    logger.debug("Formatted hosts: %s", formatted_hosts)
+
+    output_file = args.output_directory / host
+    output_text = "\n\n".join(formatted_hosts)
+    logger.debug("Writing to %s: %s", output_file, output_text)
+    output_file.write_text(output_text)
+    logger.info("Wrote %s", output_file)
