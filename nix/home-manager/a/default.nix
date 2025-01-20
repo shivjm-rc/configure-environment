@@ -205,6 +205,10 @@
 
       # This is not yet available.
       # posting
+
+      rsync
+
+      ansible
     ];
 
   programs.home-manager.enable = true;
