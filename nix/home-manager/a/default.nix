@@ -209,6 +209,8 @@
       rsync
 
       ansible
+
+      srgn
     ];
 
   programs.home-manager.enable = true;
