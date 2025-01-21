@@ -470,3 +470,15 @@
 - name: posting (Python HTTP tool)
   uv: posting
   version: 2
+- name: jsonnet-language-server
+  go: github.com/grafana/jsonnet-language-server
+  version: v0.14.1
+- name: qpdf
+  scoop: qpdf
+- name: hickory-dns resolver (resolve)
+  cargo: hickory-util
+  version: 0.24.2
+  features: "dns-over-https-rustls,dns-over-quic"
+- name: srgn
+  cargo: srgn
+  version: 0.13.4
