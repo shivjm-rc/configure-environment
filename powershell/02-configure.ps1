@@ -78,5 +78,7 @@ SetMachineEnv -Name "EXE4J_JAVA_HOME" -Value $env:JAVA_HOME
 Copy-Item -Path $UserProfileSource\.ripgreprc
 SetMachineEnv -Name "RIPGREP_CONFIG_PATH" -Value "$env:USERPROFILE\.ripgreprc"
 
+# Disable cgroupsv1 in WSL.
+New-Item -Path "$env:USERPROFILE\.wslconfig" -Target "./dharti/.wslconfig" -ItemType HardLink
 
 # TODO: Add Git config, yt-dlp config
