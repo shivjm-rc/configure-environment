@@ -19,7 +19,7 @@
     kernelModules = [ "nfs" ];
   };
 
-  environment.systemPackages = with pkgs; [ nfs-utils passt podman-tui ];
+  environment.systemPackages = with pkgs; [ nfs-utils passt ];
 
   home-manager = {
     useUserPackages = true;
@@ -78,11 +78,9 @@
 
       # Required for containers under podman-compose to be able to talk to each other.
       defaultNetwork.settings.dns_enabled = true;
-
-      dockerCompat = true;
     };
   };
-  # virtualisation.docker.enable = true;
+  virtualisation.docker.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "22.11";
