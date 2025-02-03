@@ -20,10 +20,10 @@
     startMenuLaunchers = true;
 
     # Enable native Docker support
-    docker-native.enable = true;
+    # docker-native.enable = true;
 
     # Enable integration with Docker Desktop (needs to be installed)
-    docker-desktop.enable = true;
+    # docker-desktop.enable = true;
 
     # This requires htngr/NixOS-WSL to work. See the README.
     nativeSystemd = true;
