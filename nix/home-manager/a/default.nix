@@ -208,7 +208,7 @@
 
       ansible
 
-      srgn
+      pkgs.unstable.srgn
     ];
 
   programs.home-manager.enable = true;
