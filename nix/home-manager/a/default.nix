@@ -48,6 +48,8 @@
     in
     with pkgs; [
       age
+      git-agecrypt
+
       ffmpeg
       curl
       zsh-fzf-tab
