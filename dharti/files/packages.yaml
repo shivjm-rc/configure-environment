@@ -482,3 +482,7 @@
 - name: srgn
   cargo: srgn
   version: 0.13.4
+- name: git-agecrypt
+  cargo: git-agecrypt
+  git: https://github.com/vlaci/git-agecrypt.git
+  version: 126be86c515466c5878a60561f754a9ab4af6ee8
