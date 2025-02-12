@@ -196,8 +196,6 @@
       ipmitool
       nmap
 
-      talosctl
-
       # latestRustNightly
       rustup
 
