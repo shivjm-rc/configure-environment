@@ -178,7 +178,7 @@
 
       vivid
 
-      pkgs.unstable.haskellPackages.hledger_1_34
+      pkgs.unstable.haskellPackages.hledger_1_41
 
       zenith # alternative to `top` and `bottom`
 
