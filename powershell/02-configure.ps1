@@ -75,8 +75,8 @@ New-Item -Path "$env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profi
 
 SetMachineEnv -Name "EXE4J_JAVA_HOME" -Value $env:JAVA_HOME
 
-Copy-Item -Path $UserProfileSource\.ripgreprc
 SetMachineEnv -Name "RIPGREP_CONFIG_PATH" -Value "$env:USERPROFILE\.ripgreprc"
+New-Item -ItemType HardLink -Target ../nix/home-manager/a/ripgreprc -Path "$env:USERPROFILE/.ripgreprc"
 
 # Disable cgroupsv1 in WSL.
 New-Item -Path "$env:USERPROFILE\.wslconfig" -Target "./dharti/.wslconfig" -ItemType HardLink

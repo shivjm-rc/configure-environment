@@ -1,0 +1,6 @@
+--type-add
+pug:*.pug
+--type-add
+js:*.{js,ts}*
+--type-add
+onlyjs:*.js*

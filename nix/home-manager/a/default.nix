@@ -86,7 +86,6 @@
       fd
       fselect
       loc
-      ripgrep
       amber
       xh
       du-dust
@@ -401,6 +400,11 @@
     client = { };
 
     server = { };
+  };
+
+  programs.ripgrep = {
+    enable = true;
+    arguments = lib.strings.splitString "\n" (lib.trim (builtins.readFile ./ripgreprc));
   };
 
   # Nicely reload system units when changing configs
