@@ -131,7 +131,7 @@
 - name: diffutils
   chocolatey: diffutils
 - name: Python
-  chocolatey: python
+  scoop: python
 - name: uv (Python package manager)
   scoop: uv
 - name: zig
