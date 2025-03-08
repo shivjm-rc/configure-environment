@@ -9,6 +9,17 @@
 
   environment.noXlibs = false;
 
+  nix.settings.system-features = [
+    "benchmark"
+    "big-parallel"
+    "kvm"
+    "nixos-test"
+    "gccarch-x86_64"
+    "gccarch-x86_64-v3"
+    "gccarch-x86_64-v4"
+    "gccarch-znver2"
+  ];
+
   wsl = {
     enable = true;
     wslConf.automount.root = "/mnt";
