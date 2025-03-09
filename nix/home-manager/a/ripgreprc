@@ -4,3 +4,5 @@ pug:*.pug
 js:*.{js,ts}*
 --type-add
 onlyjs:*.js*
+--type-add
+jsonnet:*.{jsonnet,libsonnet}
