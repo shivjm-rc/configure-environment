@@ -30,10 +30,19 @@
     { self, nixpkgs, home-manager, rust-overlay, flake-utils, ... }@inputs:
     let
       inherit (self) outputs;
-      mkNixos = modules:
+      # See list at <https://github.com/NixOS/nixpkgs/blob/master/lib/systems/architectures.nix>.
+      platform = { arch, ... }: {
+        nixpkgs.hostPlatform = {
+          arch = arch;
+          tune = arch;
+
+          system = "x86_64-linux";
+        };
+      };
+      mkNixos = arch: modules:
         nixpkgs.lib.nixosSystem {
           inherit modules;
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = { inherit inputs outputs arch; };
         };
       mkHome = modules: pkgs:
         home-manager.lib.homeManagerConfiguration {
@@ -52,16 +61,12 @@
         in import ./shell.nix { inherit pkgs; });
 
       overlays = import ./overlays { inherit inputs; };
-      # Reusable nixos modules you might want to export
-      # These are usually stuff you would upstream into nixpkgs
       nixosModules = import ./modules/nixos;
-      # Reusable home-manager modules you might want to export
-      # These are usually stuff you would upstream into home-manager
       homeManagerModules = import ./modules/home-manager;
 
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
-      nixosConfigurations = { A-PC = mkNixos [ ./hosts/a-pc ]; };
+      nixosConfigurations = { A-PC = mkNixos "znver3" [ platform ./hosts/a-pc ]; };
 
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'

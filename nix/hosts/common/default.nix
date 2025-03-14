@@ -38,8 +38,6 @@
       (final: prev: { home-manager = pkgs.unstable.home-manager; })
     ];
     config = { allowUnfree = true; };
-
-    system = "x86_64-linux";
   };
 
   nix = {
