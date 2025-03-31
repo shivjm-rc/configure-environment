@@ -272,6 +272,7 @@
       n = "npm";
       k = "kubectl";
       tf = "terraform";
+      j = "just";
     };
 
     history = {
