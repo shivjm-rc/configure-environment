@@ -199,6 +199,7 @@
 
       # latestRustNightly
       rustup
+      rust-script
 
       imagemagick_light
 
