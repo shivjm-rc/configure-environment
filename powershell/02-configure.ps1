@@ -41,6 +41,7 @@ Write-Output "You must install Iosevka and Iosevka Aile manually."
 Write-Output "Copying .gitconfig…"
 $script:GitConfigSource = $UserProfileSource + '\.gitconfig'
 Copy-Item -Force -Path $script:GitConfigSource -Destination $env:USERPROFILE\.gitconfig -Recurse
+git config --global core.excludesfile (Get-Item ../files/global-gitignore).FullName
 
 Write-Output "Setting both ``GNUPG_HOME`` and ``GNUPGHOME``…"
 $script:GpgHome = $MediaSource + '\My\GPG'
