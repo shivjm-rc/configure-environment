@@ -211,6 +211,8 @@
       ansible
 
       pkgs.unstable.srgn
+
+      typst
     ];
 
   programs.home-manager.enable = true;
