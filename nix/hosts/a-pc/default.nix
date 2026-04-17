@@ -24,6 +24,12 @@
     (x: "gccarch-${x}")
     ((lib.systems.architectures.inferiors.${arch} or [ ]) ++ [ arch ]);
 
+  nix.gc = {
+    automatic = true;
+    dates = "Sat *-*-* 16:21:00";
+    options = "--delete-older-than 30d";
+  };
+
   wsl = {
     enable = true;
     wslConf.automount.root = "/mnt";
