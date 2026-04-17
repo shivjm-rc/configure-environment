@@ -275,6 +275,8 @@
       k = "kubectl";
       tf = "terraform";
       j = "just";
+
+      clean-nix = "sudo sh -c 'nix-collect-garbage --delete-older-than 30d && nix-store --optimise && nix-store --gc' && nix-collect-garbage -d";
     };
 
     history = {
