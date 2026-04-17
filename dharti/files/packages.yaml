@@ -175,9 +175,6 @@
   scoop: fd
 - name: fselect
   scoop: fselect
-- name: loc
-  cargo: loc
-  version: 0.5.0
 - name: ripgrep
   scoop: ripgrep
 - name: amber
@@ -189,10 +186,6 @@
   git: https://github.com/jez/as-tree
 - name: dust
   scoop: dust
-- name: parallel-disk-usage
-  cargo: parallel-disk-usage
-  bin: pdu
-  version: 0.9.0
 - name: lsd
   scoop: lsd
 - name: zoxide
@@ -241,9 +234,6 @@
 - name: cargo-unused-features
   cargo: cargo-unused-features
   version: 0.2.0
-- name: ddt
-  cargo: ddt
-  version: 0.2.5
 - name: Node.js (global, via Chocolatey)
   chocolatey: nodejs
   version: 18.17.1
@@ -311,12 +301,14 @@
   uv: yamale
 - name: yamllint
   uv: yamllint
+# - name: python-lsp-server
+#   uv: python-lsp-server[all]
+#   inject:
+#     - pylsp-mypy
+#     - python-lsp-isort
+#     - pylsp-rope
 - name: python-lsp-server
-  uv: python-lsp-server[all]
-  inject:
-    - pylsp-mypy
-    - pyls-isort
-    - pylsp-rope
+  # TODO install via pipx
 - name: fonttools
   uv: fonttools
 - name: mypy
@@ -352,9 +344,8 @@
 - name: duf
   go: github.com/muesli/duf
   version: v0.8.1
-- name: terraform-ls
-  go: github.com/hashicorp/terraform-ls
-  version: v0.29.1
+- name: Terraform language server (terraform-ls)
+  scoop: terraform-ls
 - name: yaml-to-json-go
   go: github.com/jdockerty/yaml-to-json-go
   version: a638fe650ecf94910a9cf8a5f2c83ee99d77e4a7
@@ -404,8 +395,10 @@
   scoop: soundswitch
 - name: hledger
   scoop: hledger
-- name: nushell
+- name: Nushell
   scoop: nu
+- name: "Nushell plugin: formats"
+  cargo: nu_plugin_formats
 - name: poppler
   scoop: poppler
 - name: Element
@@ -477,8 +470,8 @@
   scoop: qpdf
 - name: hickory-dns resolver (resolve)
   cargo: hickory-util
-  version: 0.24.2
-  features: "dns-over-https-rustls,dns-over-quic"
+  version: 0.26.0
+  features: "tls-aws-lc-rs,https-aws-lc-rs,quic-ring,h3-ring,dnssec-aws-lc-rs,dnssec-ring"
 - name: srgn
   cargo: srgn
   version: 0.13.4
@@ -486,3 +479,25 @@
   cargo: git-agecrypt
   git: https://github.com/vlaci/git-agecrypt.git
   version: 126be86c515466c5878a60561f754a9ab4af6ee8
+- name: Stack (Haskell)
+  scoop: stack
+- name: haskell-language-server
+  scoop: haskell-language-server
+- name: KCL
+  go: kcl-lang.io/cli/cmd/kcl
+  version: 0.11.2
+- name: KCL Language Server
+  scoop: kcl-lsp
+- name: hwatch (alternative to watch)
+  cargo: hwatch
+  version: "0.3.19"
+- name: sumatrapdf
+  scoop: sumatrapdf
+- name: xidel
+  scoop: xidel
+- name: ty (Python type checker)
+  pipx: ty
+- name: kubectx
+  scoop: kubectx
+# - name: toot (Mastodon CLI)
+#   pipx: toot
