@@ -22,6 +22,7 @@ $buckets = @(
     @{ "name" = "nonportable"},
     @{ "name" = "smallstep"; "repo" = "https://github.com/smallstep/scoop-bucket.git" }
     @{ "name" = "kcl-lang"; "repo" = "https://github.com/kcl-lang/scoop-bucket.git" }
+    @{ "name" = "shivjm"; "repo" = "https://github.com/shivjm/scoop-personal.git" }
 )
 
 foreach ($bucket in $buckets) {
