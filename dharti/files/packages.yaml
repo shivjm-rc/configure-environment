@@ -501,3 +501,5 @@
   scoop: kubectx
 # - name: toot (Mastodon CLI)
 #   pipx: toot
+- name: resharp-grep
+  scoop: shivjm/resharp-grep

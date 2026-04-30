@@ -21,6 +21,7 @@
       (final: prev: {
         zellij = pkgs.unstable.zellij;
         sensible = pkgs.unstable.vimPlugins.sensible;
+        resharp-grep = inputs.resharp;
       })
     ];
     config = {
@@ -213,6 +214,8 @@
       pkgs.unstable.srgn
 
       typst
+
+      resharp-grep
     ];
 
   programs.home-manager.enable = true;
