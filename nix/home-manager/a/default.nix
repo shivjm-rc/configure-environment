@@ -86,16 +86,14 @@
       # cargo-watch
       fd
       fselect
-      loc
       amber
       xh
-      du-dust
+      dust
       # dysk # this causes collisions in completions
       lsd
       gping
       tidy-viewer
       sd
-      xsv
       pkgs.unstable.just
       # cargo-feature
       # cargo-nextest
@@ -108,26 +106,27 @@
       wasm-pack
       # cargo-unused-features
       # cargo-run-bin
-      unstable.nodePackages_latest.pnpm
+      pnpm
       yarn
-      nodePackages.js-beautify
-      nodePackages.prettier
+      js-beautify
+      prettier
       netlify-cli
-      nodePackages.vscode-json-languageserver
-      nodePackages.yaml-language-server
-      nodePackages.bash-language-server
-      nodePackages.svelte-language-server
+      vscode-json-languageserver
+      yaml-language-server
+      bash-language-server
+      svelte-language-server
       typescript
-      nodePackages.typescript-language-server
-      nodePackages.mermaid-cli
-      nodePackages.stylelint
-      nodePackages.postcss
+      typescript-language-server
+      mermaid-cli
+      stylelint
+      # TODO figure out the issue with the PostCSS package
+      # postcss
       black
       pdm
       pre-commit
       yamale
       yamllint
-      python310Packages.python-lsp-server
+      python312Packages.python-lsp-server
       mypy
       # fonttools
       s4cmd
@@ -187,7 +186,7 @@
       pkg-config
       openssl.dev
 
-      poppler_utils
+      poppler-utils
       powershell
 
       pkgs.unstable.eza
@@ -221,12 +220,13 @@
   programs.home-manager.enable = true;
   programs.git.enable = true;
   programs.git.lfs.enable = true;
-  programs.git.delta = {
+  programs.delta = {
     enable = true;
     options = {
       navigate = true;
       side-by-side = true;
     };
+    enableGitIntegration = true;
   };
 
   programs.starship = {
@@ -256,7 +256,7 @@
   programs.zsh = {
     enable = true;
     autocd = false;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     autosuggestion = {
       enable = true;
     };
