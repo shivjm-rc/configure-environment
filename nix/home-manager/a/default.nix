@@ -280,6 +280,8 @@
       j = "just";
 
       clean-nix = "sudo sh -c 'nix-collect-garbage --delete-older-than 30d && nix-store --optimise && nix-store --gc' && nix-collect-garbage -d";
+
+      rgx = "docker run -it --rm -v ~/.cache/rgx:/cache/rgx rust:1.96.0 bash -c 'cargo install --features pcre2-engine --root /cache/rgx rgx-cli && /cache/rgx/bin/rgx'";
     };
 
     history = {
