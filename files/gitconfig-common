@@ -1,0 +1,53 @@
+; -*- mode: gitconfig; -*-
+; include via:
+; [include]
+;   path = /path/to/gitconfig
+
+[init]
+	defaultBranch = main
+[core]
+	autocrlf = false
+	pager = delta
+	protectNTFS = false
+	attributesfile = ~/.gitattributes
+  ; excludesfile = (path to .gitignore)
+[log]
+  showSignature = true
+[alias]
+	quickserve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true  ; use n and N to move between diff sections
+	side-by-side = true
+
+[merge]
+	conflictstyle = diff3
+
+[diff]
+	colorMoved = default
+
+[safe]
+	directory = *
+
+[branch]
+	autoSetupMerge = always
+	autoSetupRebase = always
+
+[diff "common-lisp"]
+    xfuncname="^\\((def\\S+\\s+\\S+)"
+
+[diff "elisp"]
+    xfuncname="^\\((((def\\S+)|use-package)\\s+\\S+)"
+
+[user]
+	  useConfigOnly = true
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+; [gpg "ssh"]
+;   allowedSignersFile = /path/to/empty-file
