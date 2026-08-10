@@ -30,7 +30,14 @@
   };
 
   outputs =
-    { self, nixpkgs, home-manager, rust-overlay, flake-utils, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      rust-overlay,
+      flake-utils,
+      ...
+    }@inputs:
     let
       inherit (self) outputs;
       # See list at <https://github.com/NixOS/nixpkgs/blob/master/lib/systems/architectures.nix>.
@@ -42,26 +49,36 @@
           system = "x86_64-linux";
         };
       };
-      mkNixos = arch: modules:
+      mkNixos =
+        arch: modules:
         nixpkgs.lib.nixosSystem {
           inherit modules;
           specialArgs = { inherit inputs outputs arch; };
         };
-      mkHome = modules: pkgs:
+      mkHome =
+        modules: pkgs:
         home-manager.lib.homeManagerConfiguration {
           inherit modules pkgs;
           extraSpecialArgs = { inherit inputs outputs; };
         };
     in
     rec {
-      packages = flake-utils.lib.eachDefaultSystem (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in import ./pkgs { inherit pkgs; });
+      packages = flake-utils.lib.eachDefaultSystem (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        import ./pkgs { inherit pkgs; }
+      );
       # Devshell for bootstrapping
       # Acessible through 'nix develop' or 'nix-shell' (legacy)
-      devShells = flake-utils.lib.eachDefaultSystem (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in import ./shell.nix { inherit pkgs; });
+      devShells = flake-utils.lib.eachDefaultSystem (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        import ./shell.nix { inherit pkgs; }
+      );
 
       overlays = import ./overlays { inherit inputs; };
       nixosModules = import ./modules/nixos;
@@ -69,7 +86,12 @@
 
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
-      nixosConfigurations = { A-PC = mkNixos "znver3" [ platform ./hosts/a-pc ]; };
+      nixosConfigurations = {
+        A-PC = mkNixos "znver3" [
+          platform
+          ./hosts/a-pc
+        ];
+      };
 
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'

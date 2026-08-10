@@ -137,7 +137,6 @@
       # TODO figure out the issue with the PostCSS package
       # postcss
       black
-      pdm
       pre-commit
       yamale
       yamllint
@@ -162,7 +161,6 @@
       gomplate
       difftastic
       pkgs.unstable.erdtree
-      dogdns
       sad
       pkgs.unstable.deno
       jdk17
@@ -323,7 +321,7 @@
       ];
     };
 
-    initExtra = ''
+    initContent = ''
       bindkey -v
 
       export LS_COLORS="$(vivid generate dracula)"
@@ -345,6 +343,9 @@
   home.file.".config/powershell/Microsoft.PowerShell_profile.ps1".text = ''
     '. "~/src/my/powershell/profile.ps1"' | Invoke-Expression
   '';
+
+  # home.file.".ssh/keys" = { recursive = true; source = ./keys };
+  # programs.ssh.extraConfig = (builtins.readFile ../../generated/ssh/dharti-nix);
 
   programs.nushell.enable = true;
   programs.nushell.package = pkgs.unstable.nushell;
@@ -390,7 +391,7 @@
 
     plugins = [
       pkgs.vimPlugins.surround-nvim
-      pkgs.vimPlugins.gitgutter
+      pkgs.vimPlugins.vim-gitgutter
       pkgs.vimPlugins.ctrlp-vim
       pkgs.vimPlugins.ale
       pkgs.vimPlugins.vim-airline
@@ -399,7 +400,10 @@
       pkgs.unstable.vimPlugins.nvim-treesitter.withAllGrammars
     ];
 
-    extraLuaConfig = "";
+    initLua = "";
+    
+    withRuby = true;
+    withPython3 = true;
   };
 
   programs.bottom = {

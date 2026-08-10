@@ -96,8 +96,6 @@
   };
   virtualisation.docker.enable = true;
 
-  nixpkgs.hostPlatform = "x86_64-linux";
-
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "22.11";
 }
