@@ -72,10 +72,6 @@
     };
   };
 
-  security.wrappers = {
-    fusermount.source = "${pkgs.fuse}/bin/fusermount";
-  };
-
   programs.fuse.userAllowOther = true;
   programs.zsh.enable = true;
 

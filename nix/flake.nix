@@ -9,6 +9,11 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -36,17 +41,20 @@
       home-manager,
       rust-overlay,
       flake-utils,
+      nixos-generators,
       ...
     }@inputs:
     let
       inherit (self) outputs;
+      system = "x86_64-linux";
       # See list at <https://github.com/NixOS/nixpkgs/blob/master/lib/systems/architectures.nix>.
       platform = { arch, ... }: {
+        stdenv.hostPlatform = {
+          inherit system;
+        };
         nixpkgs.hostPlatform = {
           arch = arch;
           tune = arch;
-
-          system = "x86_64-linux";
         };
       };
       mkNixos =
@@ -93,12 +101,26 @@
         ];
       };
 
+      docker = {
+        # This should be subsumed by calling `nixos-rebuild
+        # --image-variant docker` whenever that variant is upstreamed
+        # into nixpkgs.
+        builder = nixos-generators.nixosGenerate {
+          inherit system;
+          modules = [
+            ./hosts/builder
+          ];
+          format = "docker";
+          specialArgs = { inherit inputs outputs; };
+        };
+      };
+
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations =
         let
           pkgs = import nixpkgs {
-            system = "x86_64-linux";
+            inherit system;
           };
         in
         {
@@ -107,7 +129,6 @@
             extraSpecialArgs = { inherit inputs outputs packages; };
             modules = [
               ./home-manager/a
-              (import ./home-manager/a/rclone.nix { inherit pkgs; })
             ];
           };
 
@@ -116,7 +137,6 @@
             extraSpecialArgs = { inherit inputs outputs packages; };
             modules = [
               ./home-manager/a
-              (import ./home-manager/a/rclone.nix { inherit pkgs; })
             ];
           };
         };
