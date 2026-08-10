@@ -17,8 +17,6 @@
     ../common
   ];
 
-  environment.noXlibs = false;
-
   nix.settings.system-features = [
     "benchmark"
     "big-parallel"
@@ -59,6 +57,8 @@
   };
 
   networking.hostName = "A-PC";
+  # This should be handled by NixOS-WSL.
+  networking.resolvconf.enable = false;
 
   time.timeZone = "Asia/Calcutta";
 }
