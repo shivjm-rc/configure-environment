@@ -1,4 +1,14 @@
-{ inputs, outputs, lib, config, pkgs, modulesPath, arch, ... }: {
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  modulesPath,
+  arch,
+  ...
+}:
+{
   imports = [
     ./hardware-configuration.nix
     "${modulesPath}/profiles/minimal.nix"
@@ -20,9 +30,7 @@
     "gccarch-znver2"
   ]
   # https://github.com/NixOS/nixpkgs/blob/6607cf789e541e7873d40d3a8f7815ea92204f32/nixos/modules/config/nix.nix#L54-L59
-  ++ map
-    (x: "gccarch-${x}")
-    ((lib.systems.architectures.inferiors.${arch} or [ ]) ++ [ arch ]);
+  ++ map (x: "gccarch-${x}") ((lib.systems.architectures.inferiors.${arch} or [ ]) ++ [ arch ]);
 
   nix.gc = {
     automatic = true;

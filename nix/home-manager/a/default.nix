@@ -1,4 +1,12 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -43,11 +51,18 @@
 
   home.packages =
     let
-      latestRustNightly = pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.default.override {
-        extensions = [ "rust-src" "rust-analyzer" ];
-      });
+      latestRustNightly = pkgs.rust-bin.selectLatestNightlyWith (
+        toolchain:
+        toolchain.default.override {
+          extensions = [
+            "rust-src"
+            "rust-analyzer"
+          ];
+        }
+      );
     in
-    with pkgs; [
+    with pkgs;
+    [
       age
       git-agecrypt
 
@@ -352,10 +367,15 @@
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
-    options = [ "--cmd" "p" ];
+    options = [
+      "--cmd"
+      "p"
+    ];
   };
 
-  programs.lazygit = { enable = true; };
+  programs.lazygit = {
+    enable = true;
+  };
 
   programs.neovim = {
     enable = true;

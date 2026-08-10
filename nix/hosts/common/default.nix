@@ -1,4 +1,14 @@
-{ inputs, outputs, lib, config, pkgs, modulesPath, nixpkgs-unstable, ... }: {
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  modulesPath,
+  nixpkgs-unstable,
+  ...
+}:
+{
   imports = [
     inputs.home-manager.nixosModules.home-manager
 
@@ -19,7 +29,10 @@
     kernelModules = [ "nfs" ];
   };
 
-  environment.systemPackages = with pkgs; [ nfs-utils passt ];
+  environment.systemPackages = with pkgs; [
+    nfs-utils
+    passt
+  ];
 
   home-manager = {
     useUserPackages = true;
@@ -37,7 +50,9 @@
 
       (final: prev: { home-manager = pkgs.unstable.home-manager; })
     ];
-    config = { allowUnfree = true; };
+    config = {
+      allowUnfree = true;
+    };
   };
 
   nix = {
@@ -47,8 +62,7 @@
 
     # This will additionally add your inputs to the system's legacy channels
     # Making legacy nix commands consistent as well, awesome!
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}")
-      config.nix.registry;
+    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
 
     settings = {
       # Enable flakes and new 'nix' command
@@ -58,7 +72,9 @@
     };
   };
 
-  security.wrappers = { fusermount.source = "${pkgs.fuse}/bin/fusermount"; };
+  security.wrappers = {
+    fusermount.source = "${pkgs.fuse}/bin/fusermount";
+  };
 
   programs.fuse.userAllowOther = true;
   programs.zsh.enable = true;
